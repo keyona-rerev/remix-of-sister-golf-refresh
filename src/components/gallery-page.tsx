@@ -78,7 +78,7 @@ export function GalleryPage({ gallery }: { gallery: Gallery }) {
               .map((g) => (
                 <li key={g.slug}>
                   <Link
-                    to={`/${g.slug}`}
+                    to={`/${g.slug}` as "/"}
                     className="text-sm font-medium text-fairway hover:text-accent"
                   >
                     {g.navLabel}
