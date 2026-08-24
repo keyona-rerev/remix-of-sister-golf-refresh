@@ -19,6 +19,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FounderRouteImport } from './routes/founder'
 import { Route as FounderMessageRouteImport } from './routes/founder-message'
 import { Route as MailchimpSignupRouteImport } from './routes/mailchimp-signup'
+import { Route as MembershipPreviewRouteImport } from './routes/membership-preview'
 import { Route as PracticePlaydateSessionsRouteImport } from './routes/practice-playdate-sessions'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as ProgramsRouteImport } from './routes/programs'
@@ -83,6 +84,11 @@ const FounderMessageRoute = FounderMessageRouteImport.update({
 const MailchimpSignupRoute = MailchimpSignupRouteImport.update({
   id: '/mailchimp-signup',
   path: '/mailchimp-signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembershipPreviewRoute = MembershipPreviewRouteImport.update({
+  id: '/membership-preview',
+  path: '/membership-preview',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PracticePlaydateSessionsRoute =
@@ -173,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/founder': typeof FounderRoute
   '/founder-message': typeof FounderMessageRoute
   '/mailchimp-signup': typeof MailchimpSignupRoute
+  '/membership-preview': typeof MembershipPreviewRoute
   '/practice-playdate-sessions': typeof PracticePlaydateSessionsRoute
   '/products': typeof ProductsRoute
   '/programs': typeof ProgramsRoute
@@ -200,6 +207,7 @@ export interface FileRoutesByTo {
   '/founder': typeof FounderRoute
   '/founder-message': typeof FounderMessageRoute
   '/mailchimp-signup': typeof MailchimpSignupRoute
+  '/membership-preview': typeof MembershipPreviewRoute
   '/practice-playdate-sessions': typeof PracticePlaydateSessionsRoute
   '/products': typeof ProductsRoute
   '/programs': typeof ProgramsRoute
@@ -228,6 +236,7 @@ export interface FileRoutesById {
   '/founder': typeof FounderRoute
   '/founder-message': typeof FounderMessageRoute
   '/mailchimp-signup': typeof MailchimpSignupRoute
+  '/membership-preview': typeof MembershipPreviewRoute
   '/practice-playdate-sessions': typeof PracticePlaydateSessionsRoute
   '/products': typeof ProductsRoute
   '/programs': typeof ProgramsRoute
@@ -257,6 +266,7 @@ export interface FileRouteTypes {
     | '/founder'
     | '/founder-message'
     | '/mailchimp-signup'
+    | '/membership-preview'
     | '/practice-playdate-sessions'
     | '/products'
     | '/programs'
@@ -284,6 +294,7 @@ export interface FileRouteTypes {
     | '/founder'
     | '/founder-message'
     | '/mailchimp-signup'
+    | '/membership-preview'
     | '/practice-playdate-sessions'
     | '/products'
     | '/programs'
@@ -311,6 +322,7 @@ export interface FileRouteTypes {
     | '/founder'
     | '/founder-message'
     | '/mailchimp-signup'
+    | '/membership-preview'
     | '/practice-playdate-sessions'
     | '/products'
     | '/programs'
@@ -339,6 +351,7 @@ export interface RootRouteChildren {
   FounderRoute: typeof FounderRoute
   FounderMessageRoute: typeof FounderMessageRoute
   MailchimpSignupRoute: typeof MailchimpSignupRoute
+  MembershipPreviewRoute: typeof MembershipPreviewRoute
   PracticePlaydateSessionsRoute: typeof PracticePlaydateSessionsRoute
   ProductsRoute: typeof ProductsRoute
   ProgramsRoute: typeof ProgramsRoute
@@ -426,6 +439,13 @@ declare module '@tanstack/react-router' {
       path: '/mailchimp-signup'
       fullPath: '/mailchimp-signup'
       preLoaderRoute: typeof MailchimpSignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/membership-preview': {
+      id: '/membership-preview'
+      path: '/membership-preview'
+      fullPath: '/membership-preview'
+      preLoaderRoute: typeof MembershipPreviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/practice-playdate-sessions': {
@@ -547,6 +567,7 @@ const rootRouteChildren: RootRouteChildren = {
   FounderRoute: FounderRoute,
   FounderMessageRoute: FounderMessageRoute,
   MailchimpSignupRoute: MailchimpSignupRoute,
+  MembershipPreviewRoute: MembershipPreviewRoute,
   PracticePlaydateSessionsRoute: PracticePlaydateSessionsRoute,
   ProductsRoute: ProductsRoute,
   ProgramsRoute: ProgramsRoute,
@@ -566,3 +587,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
