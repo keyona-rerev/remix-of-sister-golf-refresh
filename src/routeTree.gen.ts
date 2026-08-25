@@ -32,6 +32,7 @@ import { Route as WoodfinGolf2025RouteImport } from './routes/woodfin-golf-2025'
 import { Route as WorkshopsRouteImport } from './routes/workshops'
 import { Route as CategoryGolfTipsRouteImport } from './routes/category.golf-tips'
 import { Route as GolfTipsSlugRouteImport } from './routes/golf-tips.$slug'
+import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as PortfolioSlugRouteImport } from './routes/portfolio.$slug'
 import { Route as ServiceCategorySlugRouteImport } from './routes/service-category.$slug'
 import { Route as ServiceSlugRouteImport } from './routes/service.$slug'
@@ -152,6 +153,11 @@ const GolfTipsSlugRoute = GolfTipsSlugRouteImport.update({
   path: '/golf-tips/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NewsSlugRoute = NewsSlugRouteImport.update({
+  id: '/news/$slug',
+  path: '/news/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
   id: '/portfolio/$slug',
   path: '/portfolio/$slug',
@@ -192,6 +198,7 @@ export interface FileRoutesByFullPath {
   '/workshops': typeof WorkshopsRoute
   '/category/golf-tips': typeof CategoryGolfTipsRoute
   '/golf-tips/$slug': typeof GolfTipsSlugRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/service-category/$slug': typeof ServiceCategorySlugRoute
   '/service/$slug': typeof ServiceSlugRoute
@@ -220,6 +227,7 @@ export interface FileRoutesByTo {
   '/workshops': typeof WorkshopsRoute
   '/category/golf-tips': typeof CategoryGolfTipsRoute
   '/golf-tips/$slug': typeof GolfTipsSlugRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/service-category/$slug': typeof ServiceCategorySlugRoute
   '/service/$slug': typeof ServiceSlugRoute
@@ -249,6 +257,7 @@ export interface FileRoutesById {
   '/workshops': typeof WorkshopsRoute
   '/category/golf-tips': typeof CategoryGolfTipsRoute
   '/golf-tips/$slug': typeof GolfTipsSlugRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/service-category/$slug': typeof ServiceCategorySlugRoute
   '/service/$slug': typeof ServiceSlugRoute
@@ -279,6 +288,7 @@ export interface FileRouteTypes {
     | '/workshops'
     | '/category/golf-tips'
     | '/golf-tips/$slug'
+    | '/news/$slug'
     | '/portfolio/$slug'
     | '/service-category/$slug'
     | '/service/$slug'
@@ -307,6 +317,7 @@ export interface FileRouteTypes {
     | '/workshops'
     | '/category/golf-tips'
     | '/golf-tips/$slug'
+    | '/news/$slug'
     | '/portfolio/$slug'
     | '/service-category/$slug'
     | '/service/$slug'
@@ -335,6 +346,7 @@ export interface FileRouteTypes {
     | '/workshops'
     | '/category/golf-tips'
     | '/golf-tips/$slug'
+    | '/news/$slug'
     | '/portfolio/$slug'
     | '/service-category/$slug'
     | '/service/$slug'
@@ -364,6 +376,7 @@ export interface RootRouteChildren {
   WorkshopsRoute: typeof WorkshopsRoute
   CategoryGolfTipsRoute: typeof CategoryGolfTipsRoute
   GolfTipsSlugRoute: typeof GolfTipsSlugRoute
+  NewsSlugRoute: typeof NewsSlugRoute
   PortfolioSlugRoute: typeof PortfolioSlugRoute
   ServiceCategorySlugRoute: typeof ServiceCategorySlugRoute
   ServiceSlugRoute: typeof ServiceSlugRoute
@@ -532,6 +545,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GolfTipsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/news/$slug': {
+      id: '/news/$slug'
+      path: '/news/$slug'
+      fullPath: '/news/$slug'
+      preLoaderRoute: typeof NewsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portfolio/$slug': {
       id: '/portfolio/$slug'
       path: '/portfolio/$slug'
@@ -580,6 +600,7 @@ const rootRouteChildren: RootRouteChildren = {
   WorkshopsRoute: WorkshopsRoute,
   CategoryGolfTipsRoute: CategoryGolfTipsRoute,
   GolfTipsSlugRoute: GolfTipsSlugRoute,
+  NewsSlugRoute: NewsSlugRoute,
   PortfolioSlugRoute: PortfolioSlugRoute,
   ServiceCategorySlugRoute: ServiceCategorySlugRoute,
   ServiceSlugRoute: ServiceSlugRoute,

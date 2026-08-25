@@ -209,7 +209,7 @@ function PostPage() {
               <ol key={i} className="list-decimal space-y-4 pl-6">
                 {block.items.map((item) => (
                   <li key={item.lead}>
-                    <strong className="text-fairway-deep">{item.lead}</strong> — {item.text}
+                    <strong className="text-fairway-deep">{item.lead}:</strong> {item.text}
                   </li>
                 ))}
               </ol>
