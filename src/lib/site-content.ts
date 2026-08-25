@@ -220,6 +220,50 @@ export const services: Service[] = [
     metaDescription:
       "Private on-course golf coaching from SisterGolf for individuals and small groups \u2014 range practice, nine holes, etiquette, scoring and a closing wrap-up session.",
   },
+  {
+    slug: "golf-tournament-consulting",
+    name: "Golf Tournament Consulting",
+    categorySlug: "workshops",
+    categoryName: "Workshops",
+    cardImage: `${UPLOADS}/2024/12/Woodfin-2024.png`,
+    heroImage: `${UPLOADS}/2024/12/Woodfin-2024.png`,
+    subtitle:
+      "Advisory support for organizations planning a charity or corporate golf tournament, built around your team and your budget.",
+    blocks: [
+      {
+        type: "paragraph",
+        text: "SisterGolf has produced the Randall L. Woodfin Charity Golf Tournament in Birmingham for five consecutive years. That production experience is the foundation of this consulting service for organizations that want to run their own tournament well.",
+      },
+      {
+        type: "paragraph",
+        text: "This is consulting and planning support. SisterGolf builds the tournament plan with you: the timeline, the budget structure, the vendor strategy, the staffing model, and the day-of run of show. Then we coach your own team or event planner as they execute it.",
+      },
+      {
+        type: "paragraph",
+        text: "To be plain about what this is not: SisterGolf does not produce outside tournaments, does not coordinate your event day-of, and does not implement the plan for you. Your organization owns execution.",
+      },
+      {
+        type: "paragraph",
+        text: "Read the full overview of how the consulting engagement works and who it is a fit for.",
+      },
+    ],
+    cta: {
+      label: "How consulting works",
+      url: "/news/how-sistergolf-consults-on-golf-tournaments",
+    },
+    highlights: [
+      {
+        title: "A plan that holds up",
+        body: "Timeline, budget structure, vendor strategy, staffing model and day-of run of show, built on real production experience.",
+      },
+      {
+        title: "Your team executes",
+        body: "SisterGolf advises and coaches. Your staff or planner carries out the work, with reviews at the milestones that matter.",
+      },
+    ],
+    metaDescription:
+      "Golf Tournament Consulting from SisterGolf: advisory planning support for organizations running a charity or corporate golf tournament, built around your team and your budget.",
+  },
 ];
 
 export const serviceBySlug = (slug: string) => services.find((s) => s.slug === slug);
@@ -632,3 +676,151 @@ export const images = {
     `${UPLOADS}/2023/01/Slide-4.jpg`,
   ],
 };
+
+
+export const newsPosts: Post[] = [
+  {
+    slug: "sistergolf-produces-woodfin-charity-golf-tournament",
+    title:
+      "SisterGolf Returns as Tournament Producer for the Randall L. Woodfin 5th Annual Charity Golf Tournament",
+    date: "Aug 25, 2026",
+    isoDate: "2026-08-25",
+    longDate: "August 25, 2026",
+    author: "SisterGolf",
+    category: "News",
+    tag: "tournament",
+    cardImage: `${UPLOADS}/2025/12/2025-Woodfin-Golf_-Gallery-Cover.png`,
+    heroImage: `${UPLOADS}/2025/12/2025-Woodfin-Golf_-Gallery-Cover.png`,
+    excerpt:
+      "SisterGolf will produce the Randall L. Woodfin 5th Annual Charity Golf Tournament on Monday, October 26, 2026, at Highland Park Golf Course in Birmingham.",
+    blocks: [
+      {
+        type: "paragraph",
+        text: "Birmingham, Alabama. SisterGolf will return as tournament producer for the Randall L. Woodfin 5th Annual Charity Golf Tournament, scheduled for Monday, October 26, 2026, at Highland Park Golf Course, 3300 Highland Avenue S, Birmingham, AL 35205. This is the fifth consecutive year that SisterGolf, the Birmingham-based company founded by Shella Sylla, has produced the event.",
+      },
+      {
+        type: "paragraph",
+        text: "SisterGolf teaches women in commission-driven sales how to use golf for business development, and produces the tournament as part of its broader work in the Birmingham golf community.",
+      },
+      {
+        type: "paragraph",
+        text: "Producing a tournament of this size is an operations job. SisterGolf recruits, trains, and coordinates the volunteers who staff registration, the practice areas, and the course itself. The company manages vendors and catering for both waves of play, builds the pairings, and works with Highland Park Golf Course on course logistics, cart staging, and parking. SisterGolf produces the signage that marks holes, directs players, and recognizes the event throughout the property. On tournament day, the team runs execution across two shotgun starts and 36 holes of play, then supports the prize presentations that close each wave.",
+      },
+      {
+        type: "paragraph",
+        text: "The 2026 tournament will use the full 36 holes at Highland Park, with four golfers per group and one group per hole. The morning wave begins with breakfast and registration at 7:00 AM and an 8:00 AM shotgun start. The afternoon wave begins with lunch and registration at 12:00 PM and a 1:00 PM shotgun start. Prize presentations for the two waves will be held at 1:00 PM and 6:00 PM in the Highland Park Banquet Room.",
+      },
+      {
+        type: "quote",
+        text: "[PLACEHOLDER QUOTE - SHELLA TO APPROVE], said Shella Sylla, founder of SisterGolf and producer of the tournament.",
+      },
+      /* Suggested quote, pending Shella's approval:
+         "Five years in, this tournament runs on preparation. Our job is to make a complicated day feel simple for the players, the volunteers, and the course." */
+      {
+        type: "paragraph",
+        text: "Four years of past tournament photos and winners, from the 2022 event through 2025, are available in the SisterGolf galleries. [See the Woodfin tournament galleries.](/woodfin-golf-2025)",
+      },
+      {
+        type: "paragraph",
+        text: "The official tournament site carries event details and sponsorship information, and Shella Sylla is listed as the tournament contact. Registration for the 2026 tournament is open now at [rlwtournament2026.com/register](https://rlwtournament2026.com/register). SisterGolf also advises organizations that are planning their own charity or corporate tournaments. Read more about [how SisterGolf consults on golf tournaments](/news/how-sistergolf-consults-on-golf-tournaments).",
+      },
+    ],
+  },
+  {
+    slug: "how-sistergolf-consults-on-golf-tournaments",
+    title:
+      "How SisterGolf Helps Organizations Build a Tournament Plan That Holds Up",
+    date: "Aug 25, 2026",
+    isoDate: "2026-08-25",
+    longDate: "August 25, 2026",
+    author: "Shella Sylla",
+    category: "News",
+    tag: "tournament consulting",
+    cardImage: `${UPLOADS}/2024/12/Woodfin-2024.png`,
+    heroImage: `${UPLOADS}/2024/12/Woodfin-2024.png`,
+    excerpt:
+      "A golf tournament is project management with parallel tracks and a date that does not move. Here is what SisterGolf's consulting service covers, and who it is a fit for.",
+    blocks: [
+      {
+        type: "paragraph",
+        text: "Most organizations underestimate what it takes to run a charity or corporate golf tournament. From the outside it looks like one event on one day. From the inside it is project management with a dozen parallel tracks, each with its own dependencies, and a date on the calendar that does not move. Miss a deadline in the spring and you feel it on the first tee in the fall.",
+      },
+      {
+        type: "paragraph",
+        text: "SisterGolf has produced the Randall L. Woodfin Charity Golf Tournament in Birmingham for five consecutive years. That production experience is the foundation of a consulting service for organizations that want to run their own tournament well.",
+      },
+      { type: "heading", text: "The moving parts you are actually managing" },
+      {
+        type: "ordered",
+        items: [
+          {
+            lead: "Volunteers",
+            text: "recruiting, training, scheduling, and assigning enough people to cover registration, the practice areas, and the course, with backups for the no-shows that always happen.",
+          },
+          {
+            lead: "Catering",
+            text: "menus, headcounts, timing, and vendor contracts, coordinated with the course's own food and beverage rules.",
+          },
+          {
+            lead: "Pairings",
+            text: "building foursomes that balance skill, honor commitments, and keep pace of play reasonable, then redoing them when players cancel the week of the event.",
+          },
+          {
+            lead: "Sponsors",
+            text: "tracking every commitment made at every level, from signage to tee gifts, so nothing promised is forgotten on the day.",
+          },
+          {
+            lead: "The course relationship",
+            text: "the contract, what the course provides, and the details, from cart staging to course setup, that only come up when you know to ask.",
+          },
+          {
+            lead: "Parking",
+            text: "arrival flow, overflow space, and signage, so the first impression of your event is not a traffic jam.",
+          },
+          {
+            lead: "Signage",
+            text: "designing, producing, and placing hole signs, banners, and directional signage, and taking it all down afterward.",
+          },
+          {
+            lead: "Registration and check-in flow",
+            text: "getting players from the parking lot to their carts with their gifts, their pairings, and their questions answered in minutes.",
+          },
+          {
+            lead: "Day-of contingency",
+            text: "weather delays, missing volunteers, vendor problems, and the plan for what happens next, written down before anyone needs it.",
+          },
+        ],
+      },
+      { type: "heading", text: "What consulting actually looks like" },
+      {
+        type: "paragraph",
+        text: "SisterGolf's role is advisory. We build the tournament plan with you: the timeline, the budget structure, the vendor strategy, the staffing model, and the day-of run of show. Then we coach your team as they execute it. In practice that means scheduled working sessions with your staff or event planner, reviews at the milestones that matter, and direct answers when something unexpected comes up.",
+      },
+      {
+        type: "paragraph",
+        text: "To be plain about what this is not: SisterGolf does not run your event. We do not coordinate the day of the tournament, we do not manage your volunteers on the ground, and we do not implement the plan for you. Your organization owns execution. Our job is to make sure you are executing a plan that holds up.",
+      },
+      { type: "heading", text: "Who this is a fit for" },
+      {
+        type: "paragraph",
+        text: "This service fits organizations that have a real event budget and someone internal, a staff member, a committee, or a contracted event planner, who can carry out the work. If you have the people but not the tournament experience, consulting closes that gap.",
+      },
+      {
+        type: "paragraph",
+        text: "It is not a fit if you are looking for someone to take the tournament off your hands entirely. There are event production companies for that. It is also not a fit if the budget is not there yet, because a sound plan cannot substitute for the resources to execute it. We would rather tell you that in the first conversation than after you have signed something.",
+      },
+      { type: "heading", text: "When the plan gets ignored" },
+      {
+        type: "paragraph",
+        text: "[PLACEHOLDER CASE STUDY - CLIENT NAME PENDING APPROVAL] A local graduate chapter of a national organization engaged SisterGolf for tournament consulting. The plan was delivered, but the chapter did not follow it, and the tournament underperformed. They have since asked to work together again, this time with a commitment to follow the plan. The lesson is not that planning fails. It is that a plan only works when the organization executes it, which is why fit matters more than enthusiasm.",
+      },
+      {
+        type: "paragraph",
+        text: "If your organization is planning a charity or corporate tournament and wants a plan built on real production experience, start with [Golf Tournament Consulting](/service/golf-tournament-consulting), or reach out through our [contact page](/contact).",
+      },
+    ],
+  },
+];
+
+export const newsPostBySlug = (slug: string) =>
+  newsPosts.find((p) => p.slug === slug);

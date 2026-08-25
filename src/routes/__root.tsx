@@ -7,7 +7,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -134,12 +134,71 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+// Tournament announcement banner expiry: auto-hides on and after October 27, 2026.
+const WOODFIN_BANNER_EXPIRY = new Date("2026-10-27T00:00:00");
+const WOODFIN_BANNER_KEY = "sg-woodfin-2026-banner";
+
+function TournamentBanner() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (new Date() >= WOODFIN_BANNER_EXPIRY) return;
+    try {
+      if (localStorage.getItem(WOODFIN_BANNER_KEY)) return;
+    } catch {
+      // localStorage unavailable; show the banner anyway.
+    }
+    setVisible(true);
+  }, []);
+
+  if (!visible) return null;
+
+  const dismiss = () => {
+    try {
+      localStorage.setItem(WOODFIN_BANNER_KEY, "dismissed");
+    } catch {
+      // localStorage unavailable; dismissal just won't persist.
+    }
+    setVisible(false);
+  };
+
+  return (
+    <div
+      role="region"
+      aria-label="Tournament announcement"
+      className="relative border-b border-border bg-fairway-deep text-fairway-foreground"
+    >
+      <p className="mx-auto max-w-7xl px-10 py-2.5 text-center text-xs leading-relaxed sm:text-sm">
+        SisterGolf produces the Randall L. Woodfin 5th Annual Charity Golf Tournament.
+        Monday, October 26, 2026 at Highland Park Golf Course.{" "}
+        <a
+          href="https://rlwtournament2026.com/register"
+          target="_blank"
+          rel="noreferrer"
+          className="font-semibold text-accent underline underline-offset-2 hover:text-fairway-foreground"
+        >
+          Register
+        </a>
+      </p>
+      <button
+        type="button"
+        aria-label="Dismiss tournament announcement"
+        onClick={dismiss}
+        className="absolute right-2 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-sm text-fairway-foreground/80 hover:bg-fairway hover:text-fairway-foreground"
+      >
+        ×
+      </button>
+    </div>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col">
+        <TournamentBanner />
         <SiteHeader />
         <main className="flex-1">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
