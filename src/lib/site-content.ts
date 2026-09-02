@@ -249,7 +249,7 @@ export const services: Service[] = [
     ],
     cta: {
       label: "How consulting works",
-      url: "/news/how-sistergolf-consults-on-golf-tournaments",
+      url: "/articles/how-sistergolf-consults-on-golf-tournaments",
     },
     highlights: [
       {
@@ -722,7 +722,7 @@ export const newsPosts: Post[] = [
       },
       {
         type: "paragraph",
-        text: "The official tournament site carries event details and sponsorship information, and Shella Sylla is listed as the tournament contact. Registration for the 2026 tournament is open now at [rlwtournament2026.com/register](https://rlwtournament2026.com/register). SisterGolf also advises organizations that are planning their own charity or corporate tournaments. Read more about [how SisterGolf consults on golf tournaments](/news/how-sistergolf-consults-on-golf-tournaments).",
+        text: "The official tournament site carries event details and sponsorship information, and Shella Sylla is listed as the tournament contact. Registration for the 2026 tournament is open now at [rlwtournament2026.com/register](https://rlwtournament2026.com/register). SisterGolf also advises organizations that are planning their own charity or corporate tournaments. Read more about [how SisterGolf consults on golf tournaments](/articles/how-sistergolf-consults-on-golf-tournaments).",
       },
     ],
   },
