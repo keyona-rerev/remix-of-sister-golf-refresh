@@ -9,7 +9,7 @@ const DESCRIPTION =
 export const Route = createFileRoute("/sistergolf-membership")({
   head: () => ({
     meta: [
-      { title: "Membership — SisterGolf" },
+      { title: "Membership | SisterGolf" },
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: "SisterGolf Membership" },
       { property: "og:description", content: DESCRIPTION },

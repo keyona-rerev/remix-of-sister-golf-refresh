@@ -218,7 +218,7 @@ export const services: Service[] = [
       },
     ],
     metaDescription:
-      "Private on-course golf coaching from SisterGolf for individuals and small groups \u2014 range practice, nine holes, etiquette, scoring and a closing wrap-up session.",
+      "Private on-course golf coaching from SisterGolf for individuals and small groups, range practice, nine holes, etiquette, scoring and a closing wrap-up session.",
   },
   {
     slug: "golf-tournament-consulting",
@@ -374,7 +374,7 @@ export const posts: Post[] = [
     cardImage: `${UPLOADS}/2021/01/Practice-balls-1024x1024-1-770x500.jpg`,
     heroImage: `${UPLOADS}/2021/01/Practice-balls-1024x1024-1.jpg`,
     excerpt:
-      "A common question in golf groups \u2014 and a perspective on why beginners should absolutely mark and play with practice balls.",
+      "A common question in golf groups, and a perspective on why beginners should absolutely mark and play with practice balls.",
     blocks: [
       {
         type: "paragraph",
@@ -430,7 +430,7 @@ export const posts: Post[] = [
     cardImage: `${UPLOADS}/2020/04/N1-1024-770x500.jpg`,
     heroImage: `${UPLOADS}/2020/04/N1-1024.jpg`,
     excerpt:
-      "Golf incorporates cardiovascular work, strength training, balance and mental concentration \u2014 and it can propel your career too.",
+      "Golf incorporates cardiovascular work, strength training, balance and mental concentration, and it can propel your career too.",
     blocks: [
       {
         type: "paragraph",
@@ -535,7 +535,7 @@ export const posts: Post[] = [
     cardImage: `${UPLOADS}/2019/01/N5-1024-770x500.jpg`,
     heroImage: `${UPLOADS}/2019/01/N5-1024.jpg`,
     excerpt:
-      "Golf is a game anyone can play regardless of gender, height, athletic ability or social status \u2014 and that makes it a business equalizer.",
+      "Golf is a game anyone can play regardless of gender, height, athletic ability or social status, and that makes it a business equalizer.",
     blocks: [
       {
         type: "paragraph",
@@ -579,7 +579,7 @@ export const posts: Post[] = [
     cardImage: `${UPLOADS}/2019/01/N3-1024-770x500.jpg`,
     heroImage: `${UPLOADS}/2019/01/N3-1024.jpg`,
     excerpt:
-      "Not a non-profit, not a membership group \u2014 a business development firm that equips women to leverage golf for career success.",
+      "Not a non-profit, not a membership group, a business development firm that equips women to leverage golf for career success.",
     blocks: [
       {
         type: "paragraph",
@@ -653,9 +653,9 @@ export const press: Press[] = [
 export type Testimonial = { title: string; youtubeId: string };
 
 export const testimonials: Testimonial[] = [
-  { title: "SisterGolf Workshop \u2014 Meadows Testimonial", youtubeId: "eH6vxNEds90" },
-  { title: "SisterGolf Workshop \u2014 Lyndsy & Jackie Testimonial", youtubeId: "7CTi6-fqxUQ" },
-  { title: "SisterGolf Workshop \u2014 Pouncy Testimonial", youtubeId: "Xrjm6SJptik" },
+  { title: "SisterGolf Workshop | Meadows Testimonial", youtubeId: "eH6vxNEds90" },
+  { title: "SisterGolf Workshop | Lyndsy & Jackie Testimonial", youtubeId: "7CTi6-fqxUQ" },
+  { title: "SisterGolf Workshop | Pouncy Testimonial", youtubeId: "Xrjm6SJptik" },
 ];
 
 export const links = {

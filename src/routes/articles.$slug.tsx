@@ -39,7 +39,7 @@ export const Route = createFileRoute("/articles/$slug")({
     if (!loaderData) {
       return {
         meta: [
-          { title: "Article unavailable — SisterGolf" },
+          { title: "Article unavailable | SisterGolf" },
           { name: "robots", content: "noindex" },
         ],
       };
@@ -48,7 +48,7 @@ export const Route = createFileRoute("/articles/$slug")({
     const url = `${SITE}/articles/${params.slug}`;
     return {
       meta: [
-        { title: `${article.title} — SisterGolf` },
+        { title: `${article.title} | SisterGolf` },
         { name: "description", content: article.excerpt },
         { property: "og:title", content: article.title },
         { property: "og:description", content: article.excerpt },

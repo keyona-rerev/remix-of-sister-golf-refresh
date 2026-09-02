@@ -6,13 +6,13 @@ const SITE = "https://sister-golf-revive.lovable.app";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SisterGolf — Golf as a Business Tool" },
+      { title: "SisterGolf | Golf as a Business Tool" },
       {
         name: "description",
         content:
           "SisterGolf teaches golf as a business development tool. Workshops, curriculum licensing and tournament consulting for companies, and a clear path for women learning the game.",
       },
-      { property: "og:title", content: "SisterGolf — Golf as a Business Tool" },
+      { property: "og:title", content: "SisterGolf | Golf as a Business Tool" },
       {
         property: "og:description",
         content:

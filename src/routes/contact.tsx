@@ -5,13 +5,13 @@ import { PageHero } from "../components/section";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact SisterGolf — Book a Workshop or Coaching" },
+      { title: "Contact SisterGolf | Book a Workshop or Coaching" },
       {
         name: "description",
         content:
           "Get in touch to schedule a SisterGolf workshop, clinic or private on-course coaching for you or your organization.",
       },
-      { property: "og:title", content: "Contact SisterGolf — Book a Workshop" },
+      { property: "og:title", content: "Contact SisterGolf | Book a Workshop" },
       {
         property: "og:description",
         content:

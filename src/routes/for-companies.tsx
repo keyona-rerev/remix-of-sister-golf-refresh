@@ -8,9 +8,9 @@ const DESCRIPTION =
 export const Route = createFileRoute("/for-companies")({
   head: () => ({
     meta: [
-      { title: "For Companies — SisterGolf Workshops, Licensing and Consulting" },
+      { title: "For Companies | SisterGolf Workshops, Licensing and Consulting" },
       { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: "For Companies — SisterGolf" },
+      { property: "og:title", content: "For Companies | SisterGolf" },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE}/for-companies` },

@@ -65,7 +65,7 @@ export const foundation = {
     "SisterGolf Foundation non-profit work. Shella volunteered with Girls, Inc. and facilitated an Intro to Golf workshop for young ladies aged 9 - 12 years old.",
   highlightsImage: `${UPLOADS}/2023/12/SD-614x453.png`,
   metaDescription:
-    "The SisterGolf Foundation is a non-profit dedicated to empowering women and underrepresented youth through golf — providing access to education, instruction and networking opportunities.",
+    "The SisterGolf Foundation is a non-profit dedicated to empowering women and underrepresented youth through golf, providing access to education, instruction and networking opportunities.",
 };
 
 /* ----------------------------------------------------------------- Programs */
@@ -95,7 +95,7 @@ export const programs: Program[] = [
     blocks: [],
     cta: { label: "Register Now", url: externalLinks.experienceRegister },
     metaDescription:
-      "The SisterGolf Experience — register for SisterGolf's flagship course experience.",
+      "The SisterGolf Experience, register for SisterGolf's flagship course experience.",
   },
   {
     slug: "2026-group-golf-lessons",
@@ -124,7 +124,7 @@ export const programs: Program[] = [
     ],
     cta: { label: "Register Now", url: externalLinks.groupLessonsRegister },
     metaDescription:
-      "SisterGolf 2026 Group Golf Lessons — a five-lesson series for beginners and early-stage golfers, led by experienced instructors with personalized feedback.",
+      "SisterGolf 2026 Group Golf Lessons, a five-lesson series for beginners and early-stage golfers, led by experienced instructors with personalized feedback.",
   },
   {
     slug: "one-on-one",
@@ -148,7 +148,7 @@ export const programs: Program[] = [
     ],
     cta: { label: "Book Now", url: externalLinks.calendly },
     metaDescription:
-      "SisterGolf One-on-One Training — personalized, on-course golf instruction with Shella, typically scheduled on Fridays.",
+      "SisterGolf One-on-One Training, personalized, on-course golf instruction with Shella, typically scheduled on Fridays.",
   },
   {
     slug: "sistergolf-private-lesson-experience",
@@ -193,7 +193,7 @@ export const programs: Program[] = [
     ],
     cta: { label: "Purchase Now", url: externalLinks.privateLessonCheckout },
     metaDescription:
-      "The SisterGolf Private Lesson Experience — personalized coaching, flexible scheduling and focused skill development in a welcoming, women-centered environment.",
+      "The SisterGolf Private Lesson Experience, personalized coaching, flexible scheduling and focused skill development in a welcoming, women-centered environment.",
   },
 ];
 
@@ -510,7 +510,7 @@ export const galleries: Gallery[] = [
       },
     ],
     metaDescription:
-      "Photo gallery from the Inaugural Randall L. Woodfin Charity Golf Tournament — 42 teams, over $90,000 raised for Miles College, Birmingham Promise and The Penny Foundation.",
+      "Photo gallery from the Inaugural Randall L. Woodfin Charity Golf Tournament, 42 teams, over $90,000 raised for Miles College, Birmingham Promise and The Penny Foundation.",
   },
 ];
 

@@ -80,7 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "SisterGolf — Golf for Business Success" },
+      { title: "SisterGolf | Golf for Business Success" },
       {
         name: "description",
         content:
