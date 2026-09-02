@@ -14,32 +14,27 @@ export function SiteFooter() {
             height={56}
           />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-fairway-foreground/70">
-            Teaching women business professionals how to use golf as a tool for building
-            relationships, closing deals and advancing their careers.
+            Golf as a business tool. We work with companies that want their sales teams on
+            the course, and with women who want to get there themselves.
           </p>
         </div>
 
         <div>
-          <h3 className="eyebrow text-fairway-foreground/60">Explore</h3>
+          <h3 className="eyebrow text-fairway-foreground/60">For companies</h3>
           <ul className="mt-4 space-y-2.5 text-sm">
             <li>
-              <Link to="/about-us" className="hover:text-accent">
-                About
+              <Link to="/for-companies" className="hover:text-accent">
+                Corporate workshops
               </Link>
             </li>
             <li>
-              <Link to="/workshops" className="hover:text-accent">
-                Workshops &amp; Coaching
+              <Link to="/for-companies" className="hover:text-accent">
+                Curriculum licensing
               </Link>
             </li>
             <li>
-              <Link to="/founder-message" className="hover:text-accent">
-                Founder
-              </Link>
-            </li>
-            <li>
-              <Link to="/category/golf-tips" className="hover:text-accent">
-                Blog
+              <Link to="/for-companies" className="hover:text-accent">
+                Tournament consulting
               </Link>
             </li>
             <li>
@@ -51,16 +46,34 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h3 className="eyebrow text-fairway-foreground/60">Stay in touch</h3>
-          <p className="mt-4 text-sm text-fairway-foreground/70">
-            Workshop dates, clinics and tips for the business round.
-          </p>
-          <a
-            href="http://sistergolfonline.com/mailchimp-signup/"
-            className="mt-4 inline-block border-b border-accent pb-0.5 text-sm font-semibold hover:text-accent"
-          >
-            Newsletter signup
-          </a>
+          <h3 className="eyebrow text-fairway-foreground/60">For women learning golf</h3>
+          <ul className="mt-4 space-y-2.5 text-sm">
+            <li>
+              <Link to="/start-your-golf-journey" className="hover:text-accent">
+                Start your golf journey
+              </Link>
+            </li>
+            <li>
+              <Link to="/sistergolf-membership" className="hover:text-accent">
+                Membership
+              </Link>
+            </li>
+            <li>
+              <Link to="/practice-playdate-sessions" className="hover:text-accent">
+                Play dates and practice
+              </Link>
+            </li>
+            <li>
+              <Link to="/articles" className="hover:text-accent">
+                Articles
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="hover:text-accent">
+                About
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
 
