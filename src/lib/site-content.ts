@@ -816,7 +816,7 @@ export const newsPosts: Post[] = [
       },
       {
         type: "paragraph",
-        text: "If your organization is planning a charity or corporate tournament and wants a plan built on real production experience, start with [Golf Tournament Consulting](/service/golf-tournament-consulting), or reach out through our [contact page](/contact).",
+        text: "If your organization is planning a charity or corporate tournament and wants a plan built on real production experience, start with [tournament consulting](/for-companies), or reach out through our [contact page](/contact).",
       },
     ],
   },

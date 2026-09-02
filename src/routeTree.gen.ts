@@ -19,7 +19,6 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ForCompaniesRouteImport } from './routes/for-companies'
 import { Route as FounderRouteImport } from './routes/founder'
 import { Route as FounderMessageRouteImport } from './routes/founder-message'
-import { Route as MailchimpSignupRouteImport } from './routes/mailchimp-signup'
 import { Route as MembershipPreviewRouteImport } from './routes/membership-preview'
 import { Route as PracticePlaydateSessionsRouteImport } from './routes/practice-playdate-sessions'
 import { Route as ProductsRouteImport } from './routes/products'
@@ -89,11 +88,6 @@ const FounderRoute = FounderRouteImport.update({
 const FounderMessageRoute = FounderMessageRouteImport.update({
   id: '/founder-message',
   path: '/founder-message',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MailchimpSignupRoute = MailchimpSignupRouteImport.update({
-  id: '/mailchimp-signup',
-  path: '/mailchimp-signup',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MembershipPreviewRoute = MembershipPreviewRouteImport.update({
@@ -209,7 +203,6 @@ export interface FileRoutesByFullPath {
   '/for-companies': typeof ForCompaniesRoute
   '/founder': typeof FounderRoute
   '/founder-message': typeof FounderMessageRoute
-  '/mailchimp-signup': typeof MailchimpSignupRoute
   '/membership-preview': typeof MembershipPreviewRoute
   '/practice-playdate-sessions': typeof PracticePlaydateSessionsRoute
   '/products': typeof ProductsRoute
@@ -242,7 +235,6 @@ export interface FileRoutesByTo {
   '/for-companies': typeof ForCompaniesRoute
   '/founder': typeof FounderRoute
   '/founder-message': typeof FounderMessageRoute
-  '/mailchimp-signup': typeof MailchimpSignupRoute
   '/membership-preview': typeof MembershipPreviewRoute
   '/practice-playdate-sessions': typeof PracticePlaydateSessionsRoute
   '/products': typeof ProductsRoute
@@ -276,7 +268,6 @@ export interface FileRoutesById {
   '/for-companies': typeof ForCompaniesRoute
   '/founder': typeof FounderRoute
   '/founder-message': typeof FounderMessageRoute
-  '/mailchimp-signup': typeof MailchimpSignupRoute
   '/membership-preview': typeof MembershipPreviewRoute
   '/practice-playdate-sessions': typeof PracticePlaydateSessionsRoute
   '/products': typeof ProductsRoute
@@ -311,7 +302,6 @@ export interface FileRouteTypes {
     | '/for-companies'
     | '/founder'
     | '/founder-message'
-    | '/mailchimp-signup'
     | '/membership-preview'
     | '/practice-playdate-sessions'
     | '/products'
@@ -344,7 +334,6 @@ export interface FileRouteTypes {
     | '/for-companies'
     | '/founder'
     | '/founder-message'
-    | '/mailchimp-signup'
     | '/membership-preview'
     | '/practice-playdate-sessions'
     | '/products'
@@ -377,7 +366,6 @@ export interface FileRouteTypes {
     | '/for-companies'
     | '/founder'
     | '/founder-message'
-    | '/mailchimp-signup'
     | '/membership-preview'
     | '/practice-playdate-sessions'
     | '/products'
@@ -411,7 +399,6 @@ export interface RootRouteChildren {
   ForCompaniesRoute: typeof ForCompaniesRoute
   FounderRoute: typeof FounderRoute
   FounderMessageRoute: typeof FounderMessageRoute
-  MailchimpSignupRoute: typeof MailchimpSignupRoute
   MembershipPreviewRoute: typeof MembershipPreviewRoute
   PracticePlaydateSessionsRoute: typeof PracticePlaydateSessionsRoute
   ProductsRoute: typeof ProductsRoute
@@ -504,13 +491,6 @@ declare module '@tanstack/react-router' {
       path: '/founder-message'
       fullPath: '/founder-message'
       preLoaderRoute: typeof FounderMessageRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mailchimp-signup': {
-      id: '/mailchimp-signup'
-      path: '/mailchimp-signup'
-      fullPath: '/mailchimp-signup'
-      preLoaderRoute: typeof MailchimpSignupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/membership-preview': {
@@ -667,7 +647,6 @@ const rootRouteChildren: RootRouteChildren = {
   ForCompaniesRoute: ForCompaniesRoute,
   FounderRoute: FounderRoute,
   FounderMessageRoute: FounderMessageRoute,
-  MailchimpSignupRoute: MailchimpSignupRoute,
   MembershipPreviewRoute: MembershipPreviewRoute,
   PracticePlaydateSessionsRoute: PracticePlaydateSessionsRoute,
   ProductsRoute: ProductsRoute,
