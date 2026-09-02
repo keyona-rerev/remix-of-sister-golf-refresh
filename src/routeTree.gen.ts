@@ -16,20 +16,23 @@ import { Route as BlogRouteImport } from './routes/blog'
 import { Route as BlogGridViewRouteImport } from './routes/blog-grid-view'
 import { Route as ChooseYourGolfJourneyRouteImport } from './routes/choose-your-golf-journey'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ForCompaniesRouteImport } from './routes/for-companies'
 import { Route as FounderRouteImport } from './routes/founder'
 import { Route as FounderMessageRouteImport } from './routes/founder-message'
-import { Route as MailchimpSignupRouteImport } from './routes/mailchimp-signup'
 import { Route as MembershipPreviewRouteImport } from './routes/membership-preview'
 import { Route as PracticePlaydateSessionsRouteImport } from './routes/practice-playdate-sessions'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as SistergolfFoundationRouteImport } from './routes/sistergolf-foundation'
 import { Route as SistergolfMembershipRouteImport } from './routes/sistergolf-membership'
+import { Route as StartYourGolfJourneyRouteImport } from './routes/start-your-golf-journey'
 import { Route as WoodfinGolf2022RouteImport } from './routes/woodfin-golf-2022'
 import { Route as WoodfinGolf2023RouteImport } from './routes/woodfin-golf-2023'
 import { Route as WoodfinGolf2024RouteImport } from './routes/woodfin-golf-2024'
 import { Route as WoodfinGolf2025RouteImport } from './routes/woodfin-golf-2025'
 import { Route as WorkshopsRouteImport } from './routes/workshops'
+import { Route as ArticlesIndexRouteImport } from './routes/articles.index'
+import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
 import { Route as CategoryGolfTipsRouteImport } from './routes/category.golf-tips'
 import { Route as GolfTipsSlugRouteImport } from './routes/golf-tips.$slug'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
@@ -72,6 +75,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForCompaniesRoute = ForCompaniesRouteImport.update({
+  id: '/for-companies',
+  path: '/for-companies',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FounderRoute = FounderRouteImport.update({
   id: '/founder',
   path: '/founder',
@@ -80,11 +88,6 @@ const FounderRoute = FounderRouteImport.update({
 const FounderMessageRoute = FounderMessageRouteImport.update({
   id: '/founder-message',
   path: '/founder-message',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MailchimpSignupRoute = MailchimpSignupRouteImport.update({
-  id: '/mailchimp-signup',
-  path: '/mailchimp-signup',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MembershipPreviewRoute = MembershipPreviewRouteImport.update({
@@ -118,6 +121,11 @@ const SistergolfMembershipRoute = SistergolfMembershipRouteImport.update({
   path: '/sistergolf-membership',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StartYourGolfJourneyRoute = StartYourGolfJourneyRouteImport.update({
+  id: '/start-your-golf-journey',
+  path: '/start-your-golf-journey',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WoodfinGolf2022Route = WoodfinGolf2022RouteImport.update({
   id: '/woodfin-golf-2022',
   path: '/woodfin-golf-2022',
@@ -141,6 +149,16 @@ const WoodfinGolf2025Route = WoodfinGolf2025RouteImport.update({
 const WorkshopsRoute = WorkshopsRouteImport.update({
   id: '/workshops',
   path: '/workshops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArticlesIndexRoute = ArticlesIndexRouteImport.update({
+  id: '/articles/',
+  path: '/articles/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArticlesSlugRoute = ArticlesSlugRouteImport.update({
+  id: '/articles/$slug',
+  path: '/articles/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CategoryGolfTipsRoute = CategoryGolfTipsRouteImport.update({
@@ -182,26 +200,29 @@ export interface FileRoutesByFullPath {
   '/blog-grid-view': typeof BlogGridViewRoute
   '/choose-your-golf-journey': typeof ChooseYourGolfJourneyRoute
   '/contact': typeof ContactRoute
+  '/for-companies': typeof ForCompaniesRoute
   '/founder': typeof FounderRoute
   '/founder-message': typeof FounderMessageRoute
-  '/mailchimp-signup': typeof MailchimpSignupRoute
   '/membership-preview': typeof MembershipPreviewRoute
   '/practice-playdate-sessions': typeof PracticePlaydateSessionsRoute
   '/products': typeof ProductsRoute
   '/programs': typeof ProgramsRoute
   '/sistergolf-foundation': typeof SistergolfFoundationRoute
   '/sistergolf-membership': typeof SistergolfMembershipRoute
+  '/start-your-golf-journey': typeof StartYourGolfJourneyRoute
   '/woodfin-golf-2022': typeof WoodfinGolf2022Route
   '/woodfin-golf-2023': typeof WoodfinGolf2023Route
   '/woodfin-golf-2024': typeof WoodfinGolf2024Route
   '/woodfin-golf-2025': typeof WoodfinGolf2025Route
   '/workshops': typeof WorkshopsRoute
+  '/articles/$slug': typeof ArticlesSlugRoute
   '/category/golf-tips': typeof CategoryGolfTipsRoute
   '/golf-tips/$slug': typeof GolfTipsSlugRoute
   '/news/$slug': typeof NewsSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/service-category/$slug': typeof ServiceCategorySlugRoute
   '/service/$slug': typeof ServiceSlugRoute
+  '/articles/': typeof ArticlesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -211,26 +232,29 @@ export interface FileRoutesByTo {
   '/blog-grid-view': typeof BlogGridViewRoute
   '/choose-your-golf-journey': typeof ChooseYourGolfJourneyRoute
   '/contact': typeof ContactRoute
+  '/for-companies': typeof ForCompaniesRoute
   '/founder': typeof FounderRoute
   '/founder-message': typeof FounderMessageRoute
-  '/mailchimp-signup': typeof MailchimpSignupRoute
   '/membership-preview': typeof MembershipPreviewRoute
   '/practice-playdate-sessions': typeof PracticePlaydateSessionsRoute
   '/products': typeof ProductsRoute
   '/programs': typeof ProgramsRoute
   '/sistergolf-foundation': typeof SistergolfFoundationRoute
   '/sistergolf-membership': typeof SistergolfMembershipRoute
+  '/start-your-golf-journey': typeof StartYourGolfJourneyRoute
   '/woodfin-golf-2022': typeof WoodfinGolf2022Route
   '/woodfin-golf-2023': typeof WoodfinGolf2023Route
   '/woodfin-golf-2024': typeof WoodfinGolf2024Route
   '/woodfin-golf-2025': typeof WoodfinGolf2025Route
   '/workshops': typeof WorkshopsRoute
+  '/articles/$slug': typeof ArticlesSlugRoute
   '/category/golf-tips': typeof CategoryGolfTipsRoute
   '/golf-tips/$slug': typeof GolfTipsSlugRoute
   '/news/$slug': typeof NewsSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/service-category/$slug': typeof ServiceCategorySlugRoute
   '/service/$slug': typeof ServiceSlugRoute
+  '/articles': typeof ArticlesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -241,26 +265,29 @@ export interface FileRoutesById {
   '/blog-grid-view': typeof BlogGridViewRoute
   '/choose-your-golf-journey': typeof ChooseYourGolfJourneyRoute
   '/contact': typeof ContactRoute
+  '/for-companies': typeof ForCompaniesRoute
   '/founder': typeof FounderRoute
   '/founder-message': typeof FounderMessageRoute
-  '/mailchimp-signup': typeof MailchimpSignupRoute
   '/membership-preview': typeof MembershipPreviewRoute
   '/practice-playdate-sessions': typeof PracticePlaydateSessionsRoute
   '/products': typeof ProductsRoute
   '/programs': typeof ProgramsRoute
   '/sistergolf-foundation': typeof SistergolfFoundationRoute
   '/sistergolf-membership': typeof SistergolfMembershipRoute
+  '/start-your-golf-journey': typeof StartYourGolfJourneyRoute
   '/woodfin-golf-2022': typeof WoodfinGolf2022Route
   '/woodfin-golf-2023': typeof WoodfinGolf2023Route
   '/woodfin-golf-2024': typeof WoodfinGolf2024Route
   '/woodfin-golf-2025': typeof WoodfinGolf2025Route
   '/workshops': typeof WorkshopsRoute
+  '/articles/$slug': typeof ArticlesSlugRoute
   '/category/golf-tips': typeof CategoryGolfTipsRoute
   '/golf-tips/$slug': typeof GolfTipsSlugRoute
   '/news/$slug': typeof NewsSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/service-category/$slug': typeof ServiceCategorySlugRoute
   '/service/$slug': typeof ServiceSlugRoute
+  '/articles/': typeof ArticlesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -272,26 +299,29 @@ export interface FileRouteTypes {
     | '/blog-grid-view'
     | '/choose-your-golf-journey'
     | '/contact'
+    | '/for-companies'
     | '/founder'
     | '/founder-message'
-    | '/mailchimp-signup'
     | '/membership-preview'
     | '/practice-playdate-sessions'
     | '/products'
     | '/programs'
     | '/sistergolf-foundation'
     | '/sistergolf-membership'
+    | '/start-your-golf-journey'
     | '/woodfin-golf-2022'
     | '/woodfin-golf-2023'
     | '/woodfin-golf-2024'
     | '/woodfin-golf-2025'
     | '/workshops'
+    | '/articles/$slug'
     | '/category/golf-tips'
     | '/golf-tips/$slug'
     | '/news/$slug'
     | '/portfolio/$slug'
     | '/service-category/$slug'
     | '/service/$slug'
+    | '/articles/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -301,26 +331,29 @@ export interface FileRouteTypes {
     | '/blog-grid-view'
     | '/choose-your-golf-journey'
     | '/contact'
+    | '/for-companies'
     | '/founder'
     | '/founder-message'
-    | '/mailchimp-signup'
     | '/membership-preview'
     | '/practice-playdate-sessions'
     | '/products'
     | '/programs'
     | '/sistergolf-foundation'
     | '/sistergolf-membership'
+    | '/start-your-golf-journey'
     | '/woodfin-golf-2022'
     | '/woodfin-golf-2023'
     | '/woodfin-golf-2024'
     | '/woodfin-golf-2025'
     | '/workshops'
+    | '/articles/$slug'
     | '/category/golf-tips'
     | '/golf-tips/$slug'
     | '/news/$slug'
     | '/portfolio/$slug'
     | '/service-category/$slug'
     | '/service/$slug'
+    | '/articles'
   id:
     | '__root__'
     | '/'
@@ -330,26 +363,29 @@ export interface FileRouteTypes {
     | '/blog-grid-view'
     | '/choose-your-golf-journey'
     | '/contact'
+    | '/for-companies'
     | '/founder'
     | '/founder-message'
-    | '/mailchimp-signup'
     | '/membership-preview'
     | '/practice-playdate-sessions'
     | '/products'
     | '/programs'
     | '/sistergolf-foundation'
     | '/sistergolf-membership'
+    | '/start-your-golf-journey'
     | '/woodfin-golf-2022'
     | '/woodfin-golf-2023'
     | '/woodfin-golf-2024'
     | '/woodfin-golf-2025'
     | '/workshops'
+    | '/articles/$slug'
     | '/category/golf-tips'
     | '/golf-tips/$slug'
     | '/news/$slug'
     | '/portfolio/$slug'
     | '/service-category/$slug'
     | '/service/$slug'
+    | '/articles/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -360,26 +396,29 @@ export interface RootRouteChildren {
   BlogGridViewRoute: typeof BlogGridViewRoute
   ChooseYourGolfJourneyRoute: typeof ChooseYourGolfJourneyRoute
   ContactRoute: typeof ContactRoute
+  ForCompaniesRoute: typeof ForCompaniesRoute
   FounderRoute: typeof FounderRoute
   FounderMessageRoute: typeof FounderMessageRoute
-  MailchimpSignupRoute: typeof MailchimpSignupRoute
   MembershipPreviewRoute: typeof MembershipPreviewRoute
   PracticePlaydateSessionsRoute: typeof PracticePlaydateSessionsRoute
   ProductsRoute: typeof ProductsRoute
   ProgramsRoute: typeof ProgramsRoute
   SistergolfFoundationRoute: typeof SistergolfFoundationRoute
   SistergolfMembershipRoute: typeof SistergolfMembershipRoute
+  StartYourGolfJourneyRoute: typeof StartYourGolfJourneyRoute
   WoodfinGolf2022Route: typeof WoodfinGolf2022Route
   WoodfinGolf2023Route: typeof WoodfinGolf2023Route
   WoodfinGolf2024Route: typeof WoodfinGolf2024Route
   WoodfinGolf2025Route: typeof WoodfinGolf2025Route
   WorkshopsRoute: typeof WorkshopsRoute
+  ArticlesSlugRoute: typeof ArticlesSlugRoute
   CategoryGolfTipsRoute: typeof CategoryGolfTipsRoute
   GolfTipsSlugRoute: typeof GolfTipsSlugRoute
   NewsSlugRoute: typeof NewsSlugRoute
   PortfolioSlugRoute: typeof PortfolioSlugRoute
   ServiceCategorySlugRoute: typeof ServiceCategorySlugRoute
   ServiceSlugRoute: typeof ServiceSlugRoute
+  ArticlesIndexRoute: typeof ArticlesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -433,6 +472,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/for-companies': {
+      id: '/for-companies'
+      path: '/for-companies'
+      fullPath: '/for-companies'
+      preLoaderRoute: typeof ForCompaniesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/founder': {
       id: '/founder'
       path: '/founder'
@@ -445,13 +491,6 @@ declare module '@tanstack/react-router' {
       path: '/founder-message'
       fullPath: '/founder-message'
       preLoaderRoute: typeof FounderMessageRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mailchimp-signup': {
-      id: '/mailchimp-signup'
-      path: '/mailchimp-signup'
-      fullPath: '/mailchimp-signup'
-      preLoaderRoute: typeof MailchimpSignupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/membership-preview': {
@@ -496,6 +535,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SistergolfMembershipRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/start-your-golf-journey': {
+      id: '/start-your-golf-journey'
+      path: '/start-your-golf-journey'
+      fullPath: '/start-your-golf-journey'
+      preLoaderRoute: typeof StartYourGolfJourneyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/woodfin-golf-2022': {
       id: '/woodfin-golf-2022'
       path: '/woodfin-golf-2022'
@@ -529,6 +575,20 @@ declare module '@tanstack/react-router' {
       path: '/workshops'
       fullPath: '/workshops'
       preLoaderRoute: typeof WorkshopsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/articles/': {
+      id: '/articles/'
+      path: '/articles'
+      fullPath: '/articles/'
+      preLoaderRoute: typeof ArticlesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/articles/$slug': {
+      id: '/articles/$slug'
+      path: '/articles/$slug'
+      fullPath: '/articles/$slug'
+      preLoaderRoute: typeof ArticlesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/category/golf-tips': {
@@ -584,26 +644,29 @@ const rootRouteChildren: RootRouteChildren = {
   BlogGridViewRoute: BlogGridViewRoute,
   ChooseYourGolfJourneyRoute: ChooseYourGolfJourneyRoute,
   ContactRoute: ContactRoute,
+  ForCompaniesRoute: ForCompaniesRoute,
   FounderRoute: FounderRoute,
   FounderMessageRoute: FounderMessageRoute,
-  MailchimpSignupRoute: MailchimpSignupRoute,
   MembershipPreviewRoute: MembershipPreviewRoute,
   PracticePlaydateSessionsRoute: PracticePlaydateSessionsRoute,
   ProductsRoute: ProductsRoute,
   ProgramsRoute: ProgramsRoute,
   SistergolfFoundationRoute: SistergolfFoundationRoute,
   SistergolfMembershipRoute: SistergolfMembershipRoute,
+  StartYourGolfJourneyRoute: StartYourGolfJourneyRoute,
   WoodfinGolf2022Route: WoodfinGolf2022Route,
   WoodfinGolf2023Route: WoodfinGolf2023Route,
   WoodfinGolf2024Route: WoodfinGolf2024Route,
   WoodfinGolf2025Route: WoodfinGolf2025Route,
   WorkshopsRoute: WorkshopsRoute,
+  ArticlesSlugRoute: ArticlesSlugRoute,
   CategoryGolfTipsRoute: CategoryGolfTipsRoute,
   GolfTipsSlugRoute: GolfTipsSlugRoute,
   NewsSlugRoute: NewsSlugRoute,
   PortfolioSlugRoute: PortfolioSlugRoute,
   ServiceCategorySlugRoute: ServiceCategorySlugRoute,
   ServiceSlugRoute: ServiceSlugRoute,
+  ArticlesIndexRoute: ArticlesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
