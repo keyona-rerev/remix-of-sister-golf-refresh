@@ -134,28 +134,24 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
-// Tournament announcement banner expiry: auto-hides on and after October 27, 2026.
-const WOODFIN_BANNER_EXPIRY = new Date("2026-10-27T00:00:00");
-const WOODFIN_BANNER_KEY = "sg-woodfin-2026-banner";
-
 function TournamentBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (new Date() >= WOODFIN_BANNER_EXPIRY) return;
+    if (!announcement.enabled) return;
     try {
-      if (localStorage.getItem(WOODFIN_BANNER_KEY)) return;
+      if (localStorage.getItem(announcement.storageKey)) return;
     } catch {
       // localStorage unavailable; show the banner anyway.
     }
     setVisible(true);
   }, []);
 
-  if (!visible) return null;
+  if (!announcement.enabled || !visible) return null;
 
   const dismiss = () => {
     try {
-      localStorage.setItem(WOODFIN_BANNER_KEY, "dismissed");
+      localStorage.setItem(announcement.storageKey, "dismissed");
     } catch {
       // localStorage unavailable; dismissal just won't persist.
     }
@@ -168,16 +164,15 @@ function TournamentBanner() {
       aria-label="Tournament announcement"
       className="relative border-b border-border bg-fairway-deep text-fairway-foreground"
     >
-      <p className="mx-auto max-w-7xl px-10 py-2.5 text-center text-xs leading-relaxed sm:text-sm">
-        SisterGolf produces the Randall L. Woodfin 5th Annual Charity Golf Tournament.
-        Monday, October 26, 2026 at Highland Park Golf Course.{" "}
+      <p className="mx-auto max-w-7xl px-10 py-2 text-center text-xs leading-relaxed sm:text-sm">
+        {announcement.text} {announcement.date}{" "}
         <a
-          href="https://rlwtournament2026.com/register"
+          href={announcement.linkUrl}
           target="_blank"
           rel="noreferrer"
           className="font-semibold text-accent underline underline-offset-2 hover:text-fairway-foreground"
         >
-          Register
+          {announcement.linkLabel}
         </a>
       </p>
       <button
