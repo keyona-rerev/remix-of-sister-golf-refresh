@@ -22,6 +22,8 @@ export const Route = createFileRoute("/contact")({
     ],
     links: [{ rel: "canonical", href: "/contact" }],
   }),
+  validateSearch: (search: Record<string, unknown>): { interest?: string } =>
+    typeof search.interest === "string" ? { interest: search.interest } : {},
   component: ContactPage,
 });
 
@@ -29,6 +31,7 @@ const inputClass =
   "mt-2 w-full rounded-sm border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-fairway";
 
 function ContactPage() {
+  const { interest } = Route.useSearch();
   const [sent, setSent] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -70,7 +73,11 @@ function ContactPage() {
               </label>
               <label className="block text-sm font-medium text-foreground">
                 What are you interested in?
-                <select name="interest" className={inputClass} defaultValue="">
+                <select
+                  name="interest"
+                  className={inputClass}
+                  defaultValue={interest ?? ""}
+                >
                   <option value="" disabled>
                     Select a program
                   </option>
