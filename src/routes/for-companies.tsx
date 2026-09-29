@@ -26,11 +26,13 @@ type Offering = {
   summary: string;
   points: string[];
   confirms: string[];
+  interest: string;
 };
 
 const offerings: Offering[] = [
   {
     id: "corporate-workshops",
+    interest: "Corporate workshop",
     name: "Corporate workshops",
     summary:
       "Professional development sessions that teach sales teams to use golf for client relationships and business development.",
@@ -43,6 +45,7 @@ const offerings: Offering[] = [
   },
   {
     id: "curriculum-licensing",
+    interest: "Curriculum licensing",
     name: "Curriculum licensing",
     summary:
       "License the SisterGolf program and run it with your own team, priced per seat.",
@@ -54,6 +57,7 @@ const offerings: Offering[] = [
   },
   {
     id: "tournament-consulting",
+    interest: "Tournament consulting",
     name: "Tournament consulting",
     summary:
       "Advisory support for organizations planning and running their own golf tournament.",
@@ -66,6 +70,7 @@ const offerings: Offering[] = [
   },
   {
     id: "on-course-coaching",
+    interest: "On-course coaching",
     name: "On-course coaching",
     summary:
       "Shella joins a client at a tournament or a round and coaches them live inside their foursome.",
@@ -133,6 +138,13 @@ function ForCompaniesPage() {
                   </li>
                 ))}
               </ul>
+            <Link
+                to="/contact"
+                search={{ interest: offering.interest }}
+                className="mt-8 inline-block rounded-sm bg-fairway px-6 py-3 text-sm font-semibold text-fairway-foreground transition-colors hover:bg-fairway-deep"
+              >
+                Ask about {offering.name.toLowerCase()}
+              </Link>
             </article>
           ))}
         </div>
