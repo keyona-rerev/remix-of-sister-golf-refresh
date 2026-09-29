@@ -130,6 +130,7 @@ function ContactPage() {
                 className="rounded-sm bg-fairway px-6 py-3 text-sm font-semibold text-fairway-foreground transition-colors hover:bg-fairway-deep"
               >
                 {sending ? "Sending..." : "Send message"}
+              </button>
             </form>
           )}
         </div>
