@@ -27,6 +27,7 @@ type Offering = {
   points: string[];
   confirms: string[];
   interest: string;
+  page?: "/curriculum-licensing" | "/tournament-consulting" | "/on-course-coaching";
 };
 
 const offerings: Offering[] = [
@@ -45,6 +46,7 @@ const offerings: Offering[] = [
   },
   {
     id: "curriculum-licensing",
+    page: "/curriculum-licensing",
     interest: "Curriculum licensing",
     name: "Curriculum licensing",
     summary:
@@ -57,6 +59,7 @@ const offerings: Offering[] = [
   },
   {
     id: "tournament-consulting",
+    page: "/tournament-consulting",
     interest: "Tournament consulting",
     name: "Tournament consulting",
     summary:
@@ -70,6 +73,7 @@ const offerings: Offering[] = [
   },
   {
     id: "on-course-coaching",
+    page: "/on-course-coaching",
     interest: "On-course coaching",
     name: "On-course coaching",
     summary:
@@ -138,13 +142,23 @@ function ForCompaniesPage() {
                   </li>
                 ))}
               </ul>
-            <Link
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                {offering.page ? (
+                  <Link
+                    to={offering.page}
+                    className="text-sm font-semibold text-fairway underline underline-offset-4 hover:text-fairway-deep"
+                  >
+                    See the full {offering.name.toLowerCase()} page
+                  </Link>
+                ) : null}
+              <Link
                 to="/contact"
                 search={{ interest: offering.interest }}
-                className="mt-8 inline-block rounded-sm bg-fairway px-6 py-3 text-sm font-semibold text-fairway-foreground transition-colors hover:bg-fairway-deep"
+                className="inline-block rounded-sm bg-fairway px-6 py-3 text-sm font-semibold text-fairway-foreground transition-colors hover:bg-fairway-deep"
               >
                 Ask about {offering.name.toLowerCase()}
               </Link>
+              </div>
             </article>
           ))}
         </div>

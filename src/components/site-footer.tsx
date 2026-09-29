@@ -28,13 +28,18 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link to="/for-companies" className="hover:text-accent">
+              <Link to="/curriculum-licensing" className="hover:text-accent">
                 Curriculum licensing
               </Link>
             </li>
             <li>
-              <Link to="/for-companies" className="hover:text-accent">
+              <Link to="/tournament-consulting" className="hover:text-accent">
                 Tournament consulting
+              </Link>
+            </li>
+            <li>
+              <Link to="/on-course-coaching" className="hover:text-accent">
+                On-course coaching
               </Link>
             </li>
             <li>

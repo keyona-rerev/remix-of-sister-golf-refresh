@@ -16,16 +16,19 @@ import { Route as BlogRouteImport } from './routes/blog'
 import { Route as BlogGridViewRouteImport } from './routes/blog-grid-view'
 import { Route as ChooseYourGolfJourneyRouteImport } from './routes/choose-your-golf-journey'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CurriculumLicensingRouteImport } from './routes/curriculum-licensing'
 import { Route as ForCompaniesRouteImport } from './routes/for-companies'
 import { Route as FounderRouteImport } from './routes/founder'
 import { Route as FounderMessageRouteImport } from './routes/founder-message'
 import { Route as MembershipPreviewRouteImport } from './routes/membership-preview'
+import { Route as OnCourseCoachingRouteImport } from './routes/on-course-coaching'
 import { Route as PracticePlaydateSessionsRouteImport } from './routes/practice-playdate-sessions'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as SistergolfFoundationRouteImport } from './routes/sistergolf-foundation'
 import { Route as SistergolfMembershipRouteImport } from './routes/sistergolf-membership'
 import { Route as StartYourGolfJourneyRouteImport } from './routes/start-your-golf-journey'
+import { Route as TournamentConsultingRouteImport } from './routes/tournament-consulting'
 import { Route as WoodfinGolf2022RouteImport } from './routes/woodfin-golf-2022'
 import { Route as WoodfinGolf2023RouteImport } from './routes/woodfin-golf-2023'
 import { Route as WoodfinGolf2024RouteImport } from './routes/woodfin-golf-2024'
@@ -75,6 +78,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CurriculumLicensingRoute = CurriculumLicensingRouteImport.update({
+  id: '/curriculum-licensing',
+  path: '/curriculum-licensing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ForCompaniesRoute = ForCompaniesRouteImport.update({
   id: '/for-companies',
   path: '/for-companies',
@@ -93,6 +101,11 @@ const FounderMessageRoute = FounderMessageRouteImport.update({
 const MembershipPreviewRoute = MembershipPreviewRouteImport.update({
   id: '/membership-preview',
   path: '/membership-preview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnCourseCoachingRoute = OnCourseCoachingRouteImport.update({
+  id: '/on-course-coaching',
+  path: '/on-course-coaching',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PracticePlaydateSessionsRoute =
@@ -124,6 +137,11 @@ const SistergolfMembershipRoute = SistergolfMembershipRouteImport.update({
 const StartYourGolfJourneyRoute = StartYourGolfJourneyRouteImport.update({
   id: '/start-your-golf-journey',
   path: '/start-your-golf-journey',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TournamentConsultingRoute = TournamentConsultingRouteImport.update({
+  id: '/tournament-consulting',
+  path: '/tournament-consulting',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WoodfinGolf2022Route = WoodfinGolf2022RouteImport.update({
@@ -200,16 +218,19 @@ export interface FileRoutesByFullPath {
   '/blog-grid-view': typeof BlogGridViewRoute
   '/choose-your-golf-journey': typeof ChooseYourGolfJourneyRoute
   '/contact': typeof ContactRoute
+  '/curriculum-licensing': typeof CurriculumLicensingRoute
   '/for-companies': typeof ForCompaniesRoute
   '/founder': typeof FounderRoute
   '/founder-message': typeof FounderMessageRoute
   '/membership-preview': typeof MembershipPreviewRoute
+  '/on-course-coaching': typeof OnCourseCoachingRoute
   '/practice-playdate-sessions': typeof PracticePlaydateSessionsRoute
   '/products': typeof ProductsRoute
   '/programs': typeof ProgramsRoute
   '/sistergolf-foundation': typeof SistergolfFoundationRoute
   '/sistergolf-membership': typeof SistergolfMembershipRoute
   '/start-your-golf-journey': typeof StartYourGolfJourneyRoute
+  '/tournament-consulting': typeof TournamentConsultingRoute
   '/woodfin-golf-2022': typeof WoodfinGolf2022Route
   '/woodfin-golf-2023': typeof WoodfinGolf2023Route
   '/woodfin-golf-2024': typeof WoodfinGolf2024Route
@@ -232,16 +253,19 @@ export interface FileRoutesByTo {
   '/blog-grid-view': typeof BlogGridViewRoute
   '/choose-your-golf-journey': typeof ChooseYourGolfJourneyRoute
   '/contact': typeof ContactRoute
+  '/curriculum-licensing': typeof CurriculumLicensingRoute
   '/for-companies': typeof ForCompaniesRoute
   '/founder': typeof FounderRoute
   '/founder-message': typeof FounderMessageRoute
   '/membership-preview': typeof MembershipPreviewRoute
+  '/on-course-coaching': typeof OnCourseCoachingRoute
   '/practice-playdate-sessions': typeof PracticePlaydateSessionsRoute
   '/products': typeof ProductsRoute
   '/programs': typeof ProgramsRoute
   '/sistergolf-foundation': typeof SistergolfFoundationRoute
   '/sistergolf-membership': typeof SistergolfMembershipRoute
   '/start-your-golf-journey': typeof StartYourGolfJourneyRoute
+  '/tournament-consulting': typeof TournamentConsultingRoute
   '/woodfin-golf-2022': typeof WoodfinGolf2022Route
   '/woodfin-golf-2023': typeof WoodfinGolf2023Route
   '/woodfin-golf-2024': typeof WoodfinGolf2024Route
@@ -265,16 +289,19 @@ export interface FileRoutesById {
   '/blog-grid-view': typeof BlogGridViewRoute
   '/choose-your-golf-journey': typeof ChooseYourGolfJourneyRoute
   '/contact': typeof ContactRoute
+  '/curriculum-licensing': typeof CurriculumLicensingRoute
   '/for-companies': typeof ForCompaniesRoute
   '/founder': typeof FounderRoute
   '/founder-message': typeof FounderMessageRoute
   '/membership-preview': typeof MembershipPreviewRoute
+  '/on-course-coaching': typeof OnCourseCoachingRoute
   '/practice-playdate-sessions': typeof PracticePlaydateSessionsRoute
   '/products': typeof ProductsRoute
   '/programs': typeof ProgramsRoute
   '/sistergolf-foundation': typeof SistergolfFoundationRoute
   '/sistergolf-membership': typeof SistergolfMembershipRoute
   '/start-your-golf-journey': typeof StartYourGolfJourneyRoute
+  '/tournament-consulting': typeof TournamentConsultingRoute
   '/woodfin-golf-2022': typeof WoodfinGolf2022Route
   '/woodfin-golf-2023': typeof WoodfinGolf2023Route
   '/woodfin-golf-2024': typeof WoodfinGolf2024Route
@@ -299,16 +326,19 @@ export interface FileRouteTypes {
     | '/blog-grid-view'
     | '/choose-your-golf-journey'
     | '/contact'
+    | '/curriculum-licensing'
     | '/for-companies'
     | '/founder'
     | '/founder-message'
     | '/membership-preview'
+    | '/on-course-coaching'
     | '/practice-playdate-sessions'
     | '/products'
     | '/programs'
     | '/sistergolf-foundation'
     | '/sistergolf-membership'
     | '/start-your-golf-journey'
+    | '/tournament-consulting'
     | '/woodfin-golf-2022'
     | '/woodfin-golf-2023'
     | '/woodfin-golf-2024'
@@ -331,16 +361,19 @@ export interface FileRouteTypes {
     | '/blog-grid-view'
     | '/choose-your-golf-journey'
     | '/contact'
+    | '/curriculum-licensing'
     | '/for-companies'
     | '/founder'
     | '/founder-message'
     | '/membership-preview'
+    | '/on-course-coaching'
     | '/practice-playdate-sessions'
     | '/products'
     | '/programs'
     | '/sistergolf-foundation'
     | '/sistergolf-membership'
     | '/start-your-golf-journey'
+    | '/tournament-consulting'
     | '/woodfin-golf-2022'
     | '/woodfin-golf-2023'
     | '/woodfin-golf-2024'
@@ -363,16 +396,19 @@ export interface FileRouteTypes {
     | '/blog-grid-view'
     | '/choose-your-golf-journey'
     | '/contact'
+    | '/curriculum-licensing'
     | '/for-companies'
     | '/founder'
     | '/founder-message'
     | '/membership-preview'
+    | '/on-course-coaching'
     | '/practice-playdate-sessions'
     | '/products'
     | '/programs'
     | '/sistergolf-foundation'
     | '/sistergolf-membership'
     | '/start-your-golf-journey'
+    | '/tournament-consulting'
     | '/woodfin-golf-2022'
     | '/woodfin-golf-2023'
     | '/woodfin-golf-2024'
@@ -396,16 +432,19 @@ export interface RootRouteChildren {
   BlogGridViewRoute: typeof BlogGridViewRoute
   ChooseYourGolfJourneyRoute: typeof ChooseYourGolfJourneyRoute
   ContactRoute: typeof ContactRoute
+  CurriculumLicensingRoute: typeof CurriculumLicensingRoute
   ForCompaniesRoute: typeof ForCompaniesRoute
   FounderRoute: typeof FounderRoute
   FounderMessageRoute: typeof FounderMessageRoute
   MembershipPreviewRoute: typeof MembershipPreviewRoute
+  OnCourseCoachingRoute: typeof OnCourseCoachingRoute
   PracticePlaydateSessionsRoute: typeof PracticePlaydateSessionsRoute
   ProductsRoute: typeof ProductsRoute
   ProgramsRoute: typeof ProgramsRoute
   SistergolfFoundationRoute: typeof SistergolfFoundationRoute
   SistergolfMembershipRoute: typeof SistergolfMembershipRoute
   StartYourGolfJourneyRoute: typeof StartYourGolfJourneyRoute
+  TournamentConsultingRoute: typeof TournamentConsultingRoute
   WoodfinGolf2022Route: typeof WoodfinGolf2022Route
   WoodfinGolf2023Route: typeof WoodfinGolf2023Route
   WoodfinGolf2024Route: typeof WoodfinGolf2024Route
@@ -472,6 +511,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/curriculum-licensing': {
+      id: '/curriculum-licensing'
+      path: '/curriculum-licensing'
+      fullPath: '/curriculum-licensing'
+      preLoaderRoute: typeof CurriculumLicensingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/for-companies': {
       id: '/for-companies'
       path: '/for-companies'
@@ -498,6 +544,13 @@ declare module '@tanstack/react-router' {
       path: '/membership-preview'
       fullPath: '/membership-preview'
       preLoaderRoute: typeof MembershipPreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/on-course-coaching': {
+      id: '/on-course-coaching'
+      path: '/on-course-coaching'
+      fullPath: '/on-course-coaching'
+      preLoaderRoute: typeof OnCourseCoachingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/practice-playdate-sessions': {
@@ -540,6 +593,13 @@ declare module '@tanstack/react-router' {
       path: '/start-your-golf-journey'
       fullPath: '/start-your-golf-journey'
       preLoaderRoute: typeof StartYourGolfJourneyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tournament-consulting': {
+      id: '/tournament-consulting'
+      path: '/tournament-consulting'
+      fullPath: '/tournament-consulting'
+      preLoaderRoute: typeof TournamentConsultingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/woodfin-golf-2022': {
@@ -644,16 +704,19 @@ const rootRouteChildren: RootRouteChildren = {
   BlogGridViewRoute: BlogGridViewRoute,
   ChooseYourGolfJourneyRoute: ChooseYourGolfJourneyRoute,
   ContactRoute: ContactRoute,
+  CurriculumLicensingRoute: CurriculumLicensingRoute,
   ForCompaniesRoute: ForCompaniesRoute,
   FounderRoute: FounderRoute,
   FounderMessageRoute: FounderMessageRoute,
   MembershipPreviewRoute: MembershipPreviewRoute,
+  OnCourseCoachingRoute: OnCourseCoachingRoute,
   PracticePlaydateSessionsRoute: PracticePlaydateSessionsRoute,
   ProductsRoute: ProductsRoute,
   ProgramsRoute: ProgramsRoute,
   SistergolfFoundationRoute: SistergolfFoundationRoute,
   SistergolfMembershipRoute: SistergolfMembershipRoute,
   StartYourGolfJourneyRoute: StartYourGolfJourneyRoute,
+  TournamentConsultingRoute: TournamentConsultingRoute,
   WoodfinGolf2022Route: WoodfinGolf2022Route,
   WoodfinGolf2023Route: WoodfinGolf2023Route,
   WoodfinGolf2024Route: WoodfinGolf2024Route,
