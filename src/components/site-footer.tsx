@@ -78,6 +78,11 @@ export function SiteFooter() {
                 About
               </Link>
             </li>
+            <li>
+              <Link to="/in-the-news" className="hover:text-accent">
+                In the news
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

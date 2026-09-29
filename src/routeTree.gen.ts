@@ -20,6 +20,7 @@ import { Route as CurriculumLicensingRouteImport } from './routes/curriculum-lic
 import { Route as ForCompaniesRouteImport } from './routes/for-companies'
 import { Route as FounderRouteImport } from './routes/founder'
 import { Route as FounderMessageRouteImport } from './routes/founder-message'
+import { Route as InTheNewsRouteImport } from './routes/in-the-news'
 import { Route as MembershipPreviewRouteImport } from './routes/membership-preview'
 import { Route as OnCourseCoachingRouteImport } from './routes/on-course-coaching'
 import { Route as PracticePlaydateSessionsRouteImport } from './routes/practice-playdate-sessions'
@@ -96,6 +97,11 @@ const FounderRoute = FounderRouteImport.update({
 const FounderMessageRoute = FounderMessageRouteImport.update({
   id: '/founder-message',
   path: '/founder-message',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InTheNewsRoute = InTheNewsRouteImport.update({
+  id: '/in-the-news',
+  path: '/in-the-news',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MembershipPreviewRoute = MembershipPreviewRouteImport.update({
@@ -222,6 +228,7 @@ export interface FileRoutesByFullPath {
   '/for-companies': typeof ForCompaniesRoute
   '/founder': typeof FounderRoute
   '/founder-message': typeof FounderMessageRoute
+  '/in-the-news': typeof InTheNewsRoute
   '/membership-preview': typeof MembershipPreviewRoute
   '/on-course-coaching': typeof OnCourseCoachingRoute
   '/practice-playdate-sessions': typeof PracticePlaydateSessionsRoute
@@ -257,6 +264,7 @@ export interface FileRoutesByTo {
   '/for-companies': typeof ForCompaniesRoute
   '/founder': typeof FounderRoute
   '/founder-message': typeof FounderMessageRoute
+  '/in-the-news': typeof InTheNewsRoute
   '/membership-preview': typeof MembershipPreviewRoute
   '/on-course-coaching': typeof OnCourseCoachingRoute
   '/practice-playdate-sessions': typeof PracticePlaydateSessionsRoute
@@ -293,6 +301,7 @@ export interface FileRoutesById {
   '/for-companies': typeof ForCompaniesRoute
   '/founder': typeof FounderRoute
   '/founder-message': typeof FounderMessageRoute
+  '/in-the-news': typeof InTheNewsRoute
   '/membership-preview': typeof MembershipPreviewRoute
   '/on-course-coaching': typeof OnCourseCoachingRoute
   '/practice-playdate-sessions': typeof PracticePlaydateSessionsRoute
@@ -330,6 +339,7 @@ export interface FileRouteTypes {
     | '/for-companies'
     | '/founder'
     | '/founder-message'
+    | '/in-the-news'
     | '/membership-preview'
     | '/on-course-coaching'
     | '/practice-playdate-sessions'
@@ -365,6 +375,7 @@ export interface FileRouteTypes {
     | '/for-companies'
     | '/founder'
     | '/founder-message'
+    | '/in-the-news'
     | '/membership-preview'
     | '/on-course-coaching'
     | '/practice-playdate-sessions'
@@ -400,6 +411,7 @@ export interface FileRouteTypes {
     | '/for-companies'
     | '/founder'
     | '/founder-message'
+    | '/in-the-news'
     | '/membership-preview'
     | '/on-course-coaching'
     | '/practice-playdate-sessions'
@@ -436,6 +448,7 @@ export interface RootRouteChildren {
   ForCompaniesRoute: typeof ForCompaniesRoute
   FounderRoute: typeof FounderRoute
   FounderMessageRoute: typeof FounderMessageRoute
+  InTheNewsRoute: typeof InTheNewsRoute
   MembershipPreviewRoute: typeof MembershipPreviewRoute
   OnCourseCoachingRoute: typeof OnCourseCoachingRoute
   PracticePlaydateSessionsRoute: typeof PracticePlaydateSessionsRoute
@@ -537,6 +550,13 @@ declare module '@tanstack/react-router' {
       path: '/founder-message'
       fullPath: '/founder-message'
       preLoaderRoute: typeof FounderMessageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/in-the-news': {
+      id: '/in-the-news'
+      path: '/in-the-news'
+      fullPath: '/in-the-news'
+      preLoaderRoute: typeof InTheNewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/membership-preview': {
@@ -708,6 +728,7 @@ const rootRouteChildren: RootRouteChildren = {
   ForCompaniesRoute: ForCompaniesRoute,
   FounderRoute: FounderRoute,
   FounderMessageRoute: FounderMessageRoute,
+  InTheNewsRoute: InTheNewsRoute,
   MembershipPreviewRoute: MembershipPreviewRoute,
   OnCourseCoachingRoute: OnCourseCoachingRoute,
   PracticePlaydateSessionsRoute: PracticePlaydateSessionsRoute,

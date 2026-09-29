@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PostCard } from "../components/cards";
 import { PageHero, SectionHeading } from "../components/section";
 import { archiveArticles, featuredArticles } from "../lib/articles";
@@ -36,6 +36,23 @@ function ArticlesPage() {
           {featuredArticles.map((article) => (
             <PostCard key={article.slug} post={article} />
           ))}
+        </div>
+      </section>
+
+      <section className="border-y border-border bg-sand">
+        <div className="mx-auto flex max-w-6xl flex-col items-start gap-4 px-6 py-10 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="eyebrow text-accent">In the news</p>
+            <p className="mt-2 text-lg text-fairway-deep">
+              Read what the press has said about SisterGolf and Shella Sylla.
+            </p>
+          </div>
+          <Link
+            to="/in-the-news"
+            className="rounded-sm bg-fairway px-6 py-3 text-sm font-semibold text-fairway-foreground transition-colors hover:bg-fairway-deep"
+          >
+            See press coverage
+          </Link>
         </div>
       </section>
 
