@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { PageHero } from "../components/section";
+import { LEAD_ENDPOINT } from "../lib/config";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -33,10 +34,29 @@ const inputClass =
 function ContactPage() {
   const { interest } = Route.useSearch();
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSent(true);
+    if (!LEAD_ENDPOINT) {
+      setError("This form is not connected yet. Please try again soon.");
+      return;
+    }
+    const form = event.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+    setSending(true);
+    setError("");
+    try {
+      const res = await fetch(LEAD_ENDPOINT, { method: "POST", body: JSON.stringify(data) });
+      const result = await res.json();
+      if (!result.ok) throw new Error(result.error || "failed");
+      setSent(true);
+    } catch {
+      setError("Your message did not send. Please try again in a moment.");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -52,11 +72,18 @@ function ContactPage() {
           <h2 className="text-2xl text-fairway-deep">Send a message</h2>
           {sent ? (
             <p className="mt-6 rounded-sm border border-fairway/30 bg-secondary p-6 text-sm text-fairway-deep">
-              Thanks. Your message is ready to send. Connect a backend and we'll deliver
-              it straight to the SisterGolf inbox.
+              Thanks. Your message reached SisterGolf. We will answer you directly.
             </p>
           ) : (
             <form className="mt-6 space-y-5" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="hidden"
+              />
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="block text-sm font-medium text-foreground">
                   Name
@@ -92,12 +119,17 @@ function ContactPage() {
                 Message
                 <textarea required name="message" rows={5} className={inputClass} />
               </label>
+              {error ? (
+                <p role="alert" className="text-sm font-medium text-destructive">
+                  {error}
+                </p>
+              ) : null}
               <button
                 type="submit"
+                disabled={sending}
                 className="rounded-sm bg-fairway px-6 py-3 text-sm font-semibold text-fairway-foreground transition-colors hover:bg-fairway-deep"
               >
-                Send message
-              </button>
+                {sending ? "Sending..." : "Send message"}
             </form>
           )}
         </div>
