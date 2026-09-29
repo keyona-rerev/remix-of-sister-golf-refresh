@@ -43,6 +43,21 @@ function HomePage() {
               course. Individual women come to us to learn the game and use it in their own
               careers.
             </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                to="/contact"
+                search={{ interest: "Corporate workshop" }}
+                className="rounded-sm bg-fairway px-6 py-3 text-sm font-semibold text-fairway-foreground hover:bg-fairway-deep"
+              >
+                Book a workshop for your team
+              </Link>
+              <Link
+                to="/start-your-golf-journey"
+                className="rounded-sm border border-fairway px-6 py-3 text-sm font-semibold text-fairway hover:bg-fairway hover:text-fairway-foreground"
+              >
+                I am learning golf myself
+              </Link>
+            </div>
           </div>
           <img
             src={images.heroGolfer}
