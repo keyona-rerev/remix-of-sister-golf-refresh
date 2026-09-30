@@ -1,10 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero } from "../components/section";
+import { PostCard } from "../components/cards";
+import { PageHero, SectionHeading } from "../components/section";
+import { archiveArticles, featuredArticles } from "../lib/articles";
 import { pressItems } from "../lib/press";
 
 const SITE = "https://sister-golf-revive.lovable.app";
 const DESCRIPTION =
-  "SisterGolf and founder Shella Sylla in the news: features, TV and press coverage.";
+  "SisterGolf in the news: press coverage of founder Shella Sylla and articles from SisterGolf on golf and business.";
 
 export const Route = createFileRoute("/in-the-news")({
   head: () => ({
@@ -21,16 +23,19 @@ export const Route = createFileRoute("/in-the-news")({
   component: InTheNewsPage,
 });
 
+const articles = [...featuredArticles, ...archiveArticles].filter((a) => !a.placeholder);
+
 function InTheNewsPage() {
   return (
     <>
       <PageHero
         eyebrow="In the news"
         title="SisterGolf in the news"
-        intro="Coverage of SisterGolf and founder Shella Sylla. Each link opens the original story."
+        intro="Press coverage of SisterGolf and founder Shella Sylla, plus articles from SisterGolf on golf and business."
       />
       <section className="mx-auto max-w-4xl px-6 py-16 sm:py-20">
-        <ul className="divide-y divide-border border-y border-border">
+        <SectionHeading eyebrow="Press" title="Coverage of SisterGolf" intro="Each link opens the original story." />
+        <ul className="mt-8 divide-y divide-border border-y border-border">
           {pressItems.map((item) => (
             <li key={item.url} className="py-8">
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
@@ -61,6 +66,21 @@ function InTheNewsPage() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="bg-secondary">
+        <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+          <SectionHeading
+            eyebrow="Articles"
+            title="Notes on golf and business"
+            intro="Everything SisterGolf publishes lives here."
+          />
+          <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            {articles.map((article) => (
+              <PostCard key={article.slug} post={article} />
+            ))}
+          </div>
+        </div>
       </section>
     </>
   );

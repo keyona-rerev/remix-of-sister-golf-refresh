@@ -88,7 +88,7 @@ function ArticleNotFound() {
     <section className="mx-auto max-w-3xl px-6 py-24 text-center">
       <h1 className="text-3xl text-fairway-deep">Article not found</h1>
       <Link
-        to="/articles"
+        to="/in-the-news"
         className="mt-6 inline-block border-b border-accent pb-0.5 text-sm font-semibold text-fairway"
       >
         Back to all articles

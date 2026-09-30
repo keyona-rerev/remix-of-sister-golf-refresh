@@ -69,11 +69,6 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link to="/articles" className="hover:text-accent">
-                Articles
-              </Link>
-            </li>
-            <li>
               <Link to="/about" className="hover:text-accent">
                 About
               </Link>
