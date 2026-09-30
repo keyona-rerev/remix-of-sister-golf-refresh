@@ -8,6 +8,7 @@ const nav = [
   { label: "Membership", to: "/sistergolf-membership" },
   { label: "About", to: "/about" },
   { label: "Articles", to: "/articles" },
+  { label: "In the News", to: "/in-the-news" },
   { label: "Contact", to: "/contact" },
 ] as const;
 
