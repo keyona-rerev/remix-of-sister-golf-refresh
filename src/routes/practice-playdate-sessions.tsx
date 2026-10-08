@@ -38,7 +38,7 @@ function PlayDatesPage() {
       <section className="mx-auto max-w-6xl px-6 py-20 sm:py-24">
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <img
-            src={playDates.image}
+            src="https://res.cloudinary.com/dialhpycd/image/upload/f_auto,q_auto,w_1280/sistergolf/practice-playdate-sessions.jpg"
             alt={playDates.title}
             loading="lazy"
             className="w-full object-cover"
