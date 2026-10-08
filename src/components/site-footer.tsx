@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import logoAsset from "../assets/sistergolf-logo.png.asset.json";
+
+const LOGO_URL =
+  "https://res.cloudinary.com/dialhpycd/image/upload/f_auto,q_auto/v1791473674/sistergolf/sistergolf-logo.png";
 
 export function SiteFooter() {
   return (
@@ -7,7 +9,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <img
-            src={logoAsset.url}
+            src={LOGO_URL}
             alt="SisterGolf"
             className="h-14 w-auto rounded-sm bg-background p-2"
             width={154}
