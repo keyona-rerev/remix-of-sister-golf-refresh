@@ -1,0 +1,8 @@
+# Netlify build settings. Netlify reads this file on every deploy.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NITRO_PRESET = "netlify"
+  NODE_VERSION = "22"
