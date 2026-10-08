@@ -155,6 +155,12 @@ function JourneyPage() {
               Answer all three questions to see your starting point.
             </p>
           ) : null}
+          <img
+            src="https://res.cloudinary.com/dialhpycd/image/upload/f_auto,q_auto,w_1600/v1791469167/sistergolf/course-penha-longa.jpg"
+            alt="Golf course landscape at Penha Longa, Portugal"
+            loading="lazy"
+            className="mt-12 h-64 w-full object-cover sm:h-80"
+          />
         </div>
       </section>
 
