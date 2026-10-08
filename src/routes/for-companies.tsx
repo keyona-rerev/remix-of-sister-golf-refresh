@@ -110,6 +110,12 @@ function ForCompaniesPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-6 py-16 sm:py-20">
+        <img
+          src="https://res.cloudinary.com/dialhpycd/image/upload/f_auto,q_auto,w_1600/v1791469164/sistergolf/course-cantigny.jpg"
+          alt="Green golf course fairway with flag"
+          loading="lazy"
+          className="mb-14 h-64 w-full object-cover sm:h-80"
+        />
         <div className="space-y-14">
           {offerings.map((offering, i) => (
             <article
