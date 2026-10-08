@@ -25,13 +25,26 @@ const otherOfferings = [
 export function OfferingPage({
   content,
   current,
+  image,
 }: {
   content: OfferingContent;
   current: string;
+  image?: { src: string; alt: string };
 }) {
   return (
     <>
       <PageHero eyebrow={content.eyebrow} title={content.title} intro={content.intro} />
+
+      {image ? (
+        <section>
+          <img
+            src={image.src}
+            alt={image.alt}
+            loading="lazy"
+            className="h-64 w-full object-cover sm:h-96"
+          />
+        </section>
+      ) : null}
 
       <section className="mx-auto max-w-4xl px-6 py-16 sm:py-20">
         <div className="grid gap-12 md:grid-cols-2">
