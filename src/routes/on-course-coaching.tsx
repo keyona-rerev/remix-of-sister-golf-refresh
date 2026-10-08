@@ -57,5 +57,14 @@ const content: OfferingContent = {
 };
 
 function Page() {
-  return <OfferingPage content={content} current="On-course coaching" />;
+  return (
+    <OfferingPage
+      content={content}
+      current="On-course coaching"
+      image={{
+        src: "https://res.cloudinary.com/dialhpycd/image/upload/f_auto,q_auto,w_1280/v1791496803/sistergolf/on-course-coaching.jpg",
+        alt: "Woman golfer playing a shot from a sand bunker",
+      }}
+    />
+  );
 }
