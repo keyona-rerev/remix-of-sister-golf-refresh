@@ -60,5 +60,14 @@ const content: OfferingContent = {
 };
 
 function Page() {
-  return <OfferingPage content={content} current="Curriculum licensing" />;
+  return (
+    <OfferingPage
+      content={content}
+      current="Curriculum licensing"
+      image={{
+        src: "https://res.cloudinary.com/dialhpycd/image/upload/f_auto,q_auto,w_1280/v1791496811/sistergolf/curriculum-licensing.jpg",
+        alt: "Golf bags with clubs lined up at a driving range",
+      }}
+    />
+  );
 }
