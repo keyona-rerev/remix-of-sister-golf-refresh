@@ -6,3 +6,50 @@
 [build.environment]
   NITRO_PRESET = "netlify"
   NODE_VERSION = "22"
+
+# Old WordPress addresses that have no page on the new site.
+# These send visitors to the closest new page (301 = permanent).
+[[redirects]]
+  from = "/contact-us"
+  to = "/contact"
+  status = 301
+
+[[redirects]]
+  from = "/mailchimp-signup"
+  to = "/contact"
+  status = 301
+
+[[redirects]]
+  from = "/faq"
+  to = "/contact"
+  status = 301
+
+[[redirects]]
+  from = "/our-team"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/blog-classic"
+  to = "/articles"
+  status = 301
+
+[[redirects]]
+  from = "/membership"
+  to = "/sistergolf-membership"
+  status = 301
+
+[[redirects]]
+  from = "/homepage2"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/homepage3"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/uncategorized/*"
+  to = "/articles"
+  status = 301
