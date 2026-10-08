@@ -84,7 +84,28 @@ export function SiteFooter() {
 
       <div className="border-t border-fairway-foreground/15">
         <div className="mx-auto max-w-6xl px-6 py-6 text-xs text-fairway-foreground/60">
-          © {new Date().getFullYear()} SisterGolf. All rights reserved.
+          <p>© {new Date().getFullYear()} SisterGolf. All rights reserved.</p>
+          <p className="mt-2">
+            Photo credits:{" "}
+            <a
+              href="https://www.flickr.com/photos/71018547@N00/2543049856"
+              target="_blank"
+              rel="noreferrer"
+              className="underline hover:text-accent"
+            >
+              danperry.com
+            </a>{" "}
+            (CC BY 2.0),{" "}
+            <a
+              href="https://www.flickr.com/photos/13878737@N05/1413021987"
+              target="_blank"
+              rel="noreferrer"
+              className="underline hover:text-accent"
+            >
+              lele3100
+            </a>{" "}
+            (CC BY 2.0)
+          </p>
         </div>
       </div>
     </footer>
