@@ -59,5 +59,14 @@ const content: OfferingContent = {
 };
 
 function Page() {
-  return <OfferingPage content={content} current="Tournament consulting" />;
+  return (
+    <OfferingPage
+      content={content}
+      current="Tournament consulting"
+      image={{
+        src: "https://res.cloudinary.com/dialhpycd/image/upload/f_auto,q_auto,w_1280/v1791496805/sistergolf/tournament-consulting.jpg",
+        alt: "Golf tournament on a course with players and golf bags",
+      }}
+    />
+  );
 }
