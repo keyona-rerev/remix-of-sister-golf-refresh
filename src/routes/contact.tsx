@@ -67,6 +67,15 @@ function ContactPage() {
         intro="Tell us what you are trying to do and we will answer directly. One message is enough."
       />
 
+      <section>
+        <img
+          src="https://res.cloudinary.com/dialhpycd/image/upload/f_auto,q_auto,w_1280/v1791497497/sistergolf/contact.jpg"
+          alt="Sunny golf green with a flag and bunker under a blue sky"
+          loading="lazy"
+          className="h-64 w-full object-cover sm:h-96"
+        />
+      </section>
+
       <section className="mx-auto grid max-w-6xl gap-16 px-6 py-20 sm:py-24 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <h2 className="text-2xl text-fairway-deep">Send a message</h2>
