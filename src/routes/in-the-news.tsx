@@ -4,7 +4,7 @@ import { PageHero, SectionHeading } from "../components/section";
 import { archiveArticles, featuredArticles } from "../lib/articles";
 import { pressItems } from "../lib/press";
 
-const SITE = "https://sister-golf-revive.lovable.app";
+import { SITE_URL as SITE } from "../lib/site-url";
 const DESCRIPTION =
   "SisterGolf in the news: press coverage of founder Shella Sylla and articles from SisterGolf on golf and business.";
 

@@ -1,3 +1,4 @@
+import { SITE_URL, absoluteUrl } from "../lib/site-url";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, SectionHeading } from "../components/section";
 import { foundation, externalLinks } from "../lib/pages-content";
@@ -12,14 +13,14 @@ export const Route = createFileRoute("/sistergolf-foundation")({
       { property: "og:type", content: "website" },
       {
         property: "og:url",
-        content: "https://sister-golf-revive.lovable.app/sistergolf-foundation",
+        content: `${SITE_URL}/sistergolf-foundation`,
       },
-      { property: "og:image", content: foundation.highlightsImage },
+      { property: "og:image", content: absoluteUrl(foundation.highlightsImage) },
     ],
     links: [
       {
         rel: "canonical",
-        href: "https://sister-golf-revive.lovable.app/sistergolf-foundation",
+        href: `${SITE_URL}/sistergolf-foundation`,
       },
     ],
   }),

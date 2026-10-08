@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { images } from "../lib/site-content";
 
-const SITE = "https://sister-golf-revive.lovable.app";
+import { SITE_URL as SITE, absoluteUrl } from "../lib/site-url";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -20,8 +20,8 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE}/` },
-      { property: "og:image", content: images.heroGolfer },
-      { name: "twitter:image", content: images.heroGolfer },
+      { property: "og:image", content: absoluteUrl(images.heroGolfer) },
+      { name: "twitter:image", content: absoluteUrl(images.heroGolfer) },
     ],
     links: [{ rel: "canonical", href: `${SITE}/` }],
   }),
@@ -112,7 +112,7 @@ function HomePage() {
 
       <section aria-label="Golf for business">
         <img
-          src="https://res.cloudinary.com/dialhpycd/image/upload/f_auto,q_auto,w_1600/v1791469159/sistergolf/woman-golfer-copyspace.jpg"
+          src="/images/photos/woman-golfer-copyspace.jpg"
           alt="Woman golfer on a course"
           loading="lazy"
           className="h-72 w-full object-cover sm:h-[26rem]"

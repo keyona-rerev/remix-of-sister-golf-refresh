@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { OfferingPage, type OfferingContent } from "../components/offering-page";
 
-const SITE = "https://sister-golf-revive.lovable.app";
+import { SITE_URL as SITE } from "../lib/site-url";
 const TITLE = "Tournament consulting";
 const DESCRIPTION =
   "Advisory support from SisterGolf for organizations planning and running their own golf tournament.";

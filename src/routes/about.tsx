@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionHeading } from "../components/section";
 import { books, images, press } from "../lib/site-content";
 
-const SITE = "https://sister-golf-revive.lovable.app";
+import { SITE_URL as SITE, absoluteUrl } from "../lib/site-url";
 const DESCRIPTION =
   "SisterGolf teaches women business professionals to use golf for business relationships and professional advancement. Founded by Shella Sylla, a former banking executive.";
 
@@ -15,8 +15,8 @@ export const Route = createFileRoute("/about")({
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE}/about` },
-      { property: "og:image", content: images.founderMessage },
-      { name: "twitter:image", content: images.founderMessage },
+      { property: "og:image", content: absoluteUrl(images.founderMessage) },
+      { name: "twitter:image", content: absoluteUrl(images.founderMessage) },
     ],
     links: [{ rel: "canonical", href: `${SITE}/about` }],
   }),

@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { externalLinks } from "../lib/pages-content";
 
-const SITE = "https://sister-golf-revive.lovable.app";
+import { SITE_URL as SITE } from "../lib/site-url";
 const DESCRIPTION =
   "Answer three questions and SisterGolf will point you to the right starting point: the cohort, the membership, or a lower-commitment first step on a course.";
 
@@ -156,7 +156,7 @@ function JourneyPage() {
             </p>
           ) : null}
           <img
-            src="https://res.cloudinary.com/dialhpycd/image/upload/f_auto,q_auto,w_1600/v1791469167/sistergolf/course-penha-longa.jpg"
+            src="/images/photos/course-penha-longa.jpg"
             alt="Golf course landscape at Penha Longa, Portugal"
             loading="lazy"
             className="mt-12 h-64 w-full object-cover sm:h-80"

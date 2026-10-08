@@ -1,26 +1,30 @@
-# Sister Golf Refresh
+# SisterGolf website
 
-https://sistergolfonline.com/ Can you remake this site
+Marketing site for SisterGolf (Shella Sylla). Built with TanStack Start, React and Tailwind.
 
-This project was built with [Lovable](https://lovable.dev).
+## Where things live
 
-**Live app**: https://sister-golf-revive.lovable.app
+- **Images:** all images are files in this repo, in `public/images/`.
+  - `public/images/uploads/` holds the photos copied from the old WordPress site. The year and month folders match the old site.
+  - `public/images/photos/` holds the stock golf photos.
+  - `public/images/sistergolf-logo.png` is the logo.
+- **Page text and image paths:** `src/lib/site-content.ts` and `src/lib/pages-content.ts`.
+- **Site address:** `src/lib/site-url.ts`. Change `SITE_URL` when the final domain goes live. Canonical links, og:url and social-share images all read from it.
+- **Contact form:** `src/lib/config.ts` holds `LEAD_ENDPOINT`. Deploy `apps-script/lead-intake/Code.gs` as an Apps Script web app and paste its URL there.
 
-## Build with Lovable
+## Photo credits
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/3e1c2580-fc50-4d65-82bd-ce5f2af83351).
+Two stock photos need a credit. The credits are in the site footer (`src/components/site-footer.tsx`):
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+- danperry.com, CC BY 2.0
+- lele3100, CC BY 2.0
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+You need Node.js.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm install
 npm run dev
+npm run build
 ```

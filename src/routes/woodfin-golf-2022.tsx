@@ -1,3 +1,4 @@
+import { SITE_URL, absoluteUrl } from "../lib/site-url";
 import { createFileRoute } from "@tanstack/react-router";
 import { GalleryPage } from "../components/gallery-page";
 import { galleryBySlug } from "../lib/pages-content";
@@ -14,14 +15,14 @@ export const Route = createFileRoute("/woodfin-golf-2022")({
       { property: "og:type", content: "website" },
       {
         property: "og:url",
-        content: "https://sister-golf-revive.lovable.app/woodfin-golf-2022",
+        content: `${SITE_URL}/woodfin-golf-2022`,
       },
-      { property: "og:image", content: gallery.bannerImage },
+      { property: "og:image", content: absoluteUrl(gallery.bannerImage) },
     ],
     links: [
       {
         rel: "canonical",
-        href: "https://sister-golf-revive.lovable.app/woodfin-golf-2022",
+        href: `${SITE_URL}/woodfin-golf-2022`,
       },
     ],
   }),

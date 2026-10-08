@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-const LOGO_URL =
-  "https://res.cloudinary.com/dialhpycd/image/upload/f_auto,q_auto/v1791473674/sistergolf/sistergolf-logo.png";
+const LOGO_URL = "/images/sistergolf-logo.png";
 
 export function SiteFooter() {
   return (

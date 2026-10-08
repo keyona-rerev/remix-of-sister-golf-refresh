@@ -1,3 +1,4 @@
+import { SITE_URL } from "../lib/site-url";
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "../components/section";
 import { playDates } from "../lib/pages-content";
@@ -12,13 +13,13 @@ export const Route = createFileRoute("/practice-playdate-sessions")({
       { property: "og:type", content: "website" },
       {
         property: "og:url",
-        content: "https://sister-golf-revive.lovable.app/practice-playdate-sessions",
+        content: `${SITE_URL}/practice-playdate-sessions`,
       },
     ],
     links: [
       {
         rel: "canonical",
-        href: "https://sister-golf-revive.lovable.app/practice-playdate-sessions",
+        href: `${SITE_URL}/practice-playdate-sessions`,
       },
     ],
   }),

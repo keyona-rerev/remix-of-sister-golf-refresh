@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "../components/section";
 import { externalLinks, membership } from "../lib/pages-content";
 
-const SITE = "https://sister-golf-revive.lovable.app";
+import { SITE_URL as SITE } from "../lib/site-url";
 const DESCRIPTION =
   "The SisterGolf membership is for women who want ongoing access to rounds, practice sessions, coaching time with Shella and a network of women who use golf for business.";
 

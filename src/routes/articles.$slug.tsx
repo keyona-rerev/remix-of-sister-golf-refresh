@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { PostCard } from "../components/cards";
 import { allArticles, articleBySlug, type Article } from "../lib/articles";
 
-const SITE = "https://sister-golf-revive.lovable.app";
+import { SITE_URL as SITE, absoluteUrl } from "../lib/site-url";
 
 // Renders [label](url) inline links inside paragraph text.
 function renderInline(text: string): ReactNode {
@@ -54,8 +54,8 @@ export const Route = createFileRoute("/articles/$slug")({
         { property: "og:description", content: article.excerpt },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
-        { property: "og:image", content: article.heroImage },
-        { name: "twitter:image", content: article.heroImage },
+        { property: "og:image", content: absoluteUrl(article.heroImage) },
+        { name: "twitter:image", content: absoluteUrl(article.heroImage) },
         ...(article.placeholder
           ? [{ name: "robots", content: "noindex" } as const]
           : []),
@@ -71,7 +71,7 @@ export const Route = createFileRoute("/articles/$slug")({
                 "@type": "Article",
                 headline: article.title,
                 datePublished: article.isoDate,
-                image: article.heroImage,
+                image: absoluteUrl(article.heroImage),
                 author: { "@type": "Person", name: article.author },
                 publisher: { "@type": "Organization", name: "SisterGolf" },
               }),

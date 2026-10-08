@@ -1,4 +1,4 @@
-export const UPLOADS = "https://sistergolfonline.com/wp-content/uploads";
+export const UPLOADS = "/images/uploads";
 
 export type ServiceCategory = {
   slug: string;
