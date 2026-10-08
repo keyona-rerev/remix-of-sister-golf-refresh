@@ -110,6 +110,15 @@ function HomePage() {
         </div>
       </section>
 
+      <section aria-label="Golf for business">
+        <img
+          src="https://res.cloudinary.com/dialhpycd/image/upload/f_auto,q_auto,w_1600/v1791469159/sistergolf/woman-golfer-copyspace.jpg"
+          alt="Woman golfer on a course"
+          loading="lazy"
+          className="h-72 w-full object-cover sm:h-[26rem]"
+        />
+      </section>
+
       <section className="bg-fairway-deep">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-6 py-12 md:flex-row md:items-center md:justify-between">
           <p className="max-w-xl text-lg leading-relaxed text-fairway-foreground/85">
