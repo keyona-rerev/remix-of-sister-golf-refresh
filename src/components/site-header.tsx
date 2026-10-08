@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import logoAsset from "../assets/sistergolf-logo.png.asset.json";
+
+const LOGO_URL =
+  "https://res.cloudinary.com/dialhpycd/image/upload/f_auto,q_auto/v1791473674/sistergolf/sistergolf-logo.png";
 
 const nav = [
   { label: "For Companies", to: "/for-companies" },
@@ -23,7 +25,7 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
         <Link to="/" className="flex items-center" onClick={close}>
           <img
-            src={logoAsset.url}
+            src={LOGO_URL}
             alt="SisterGolf"
             className="h-12 w-auto"
             width={132}
