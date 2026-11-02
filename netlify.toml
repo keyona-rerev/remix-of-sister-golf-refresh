@@ -7,6 +7,32 @@
   NITRO_PRESET = "netlify"
   NODE_VERSION = "22"
 
+# Old domain: send every sistergolfonline.com address to the same page on sistergolf.com.
+# force = true makes the rule run even though the site also serves these hosts.
+[[redirects]]
+  from = "https://sistergolfonline.com/*"
+  to = "https://sistergolf.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://sistergolfonline.com/*"
+  to = "https://sistergolf.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.sistergolfonline.com/*"
+  to = "https://sistergolf.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.sistergolfonline.com/*"
+  to = "https://sistergolf.com/:splat"
+  status = 301
+  force = true
+
 # Old WordPress addresses that have no page on the new site.
 # These send visitors to the closest new page (301 = permanent).
 [[redirects]]
