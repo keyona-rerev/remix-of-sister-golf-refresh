@@ -1,14 +1,9 @@
-# Netlify build settings. Netlify reads this file on every deploy.
+# Static copy of the SisterGolf WordPress site. There is no build step.
 [build]
-  command = "npm run build"
-  publish = "dist"
-
-[build.environment]
-  NITRO_PRESET = "netlify"
-  NODE_VERSION = "22"
+  command = "echo 'static site, no build'"
+  publish = "."
 
 # Old domain: send every sistergolfonline.com address to the same page on sistergolf.com.
-# force = true makes the rule run even though the site also serves these hosts.
 [[redirects]]
   from = "https://sistergolfonline.com/*"
   to = "https://sistergolf.com/:splat"
@@ -33,49 +28,9 @@
   status = 301
   force = true
 
-# Old WordPress addresses that have no page on the new site.
-# These send visitors to the closest new page (301 = permanent).
+# www.sistergolf.com goes to sistergolf.com.
 [[redirects]]
-  from = "/contact-us"
-  to = "/contact"
+  from = "https://www.sistergolf.com/*"
+  to = "https://sistergolf.com/:splat"
   status = 301
-
-[[redirects]]
-  from = "/mailchimp-signup"
-  to = "/contact"
-  status = 301
-
-[[redirects]]
-  from = "/faq"
-  to = "/contact"
-  status = 301
-
-[[redirects]]
-  from = "/our-team"
-  to = "/about"
-  status = 301
-
-[[redirects]]
-  from = "/blog-classic"
-  to = "/articles"
-  status = 301
-
-[[redirects]]
-  from = "/membership"
-  to = "/sistergolf-membership"
-  status = 301
-
-[[redirects]]
-  from = "/homepage2"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/homepage3"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/uncategorized/*"
-  to = "/articles"
-  status = 301
+  force = true

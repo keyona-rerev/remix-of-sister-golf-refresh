@@ -1,0 +1,74 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 25/02/2020 11:06
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("Flaticon.eot");
+  src: url("Flaticon.eot@") format("embedded-opentype"),
+       url("Flaticon.woff2") format("woff2"),
+       url("Flaticon.woff") format("woff"),
+       url("Flaticon.ttf") format("truetype"),
+       url("Flaticon.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("Flaticon.svg") format("svg");
+  }
+}
+
+[class^="thsn-grulf-icon-"]:before, [class*=" thsn-grulf-icon-"]:before,
+[class^="thsn-grulf-icon-"]:after, [class*=" thsn-grulf-icon-"]:after {   
+  font-family: Flaticon;
+  font-style: normal;
+}
+
+.thsn-grulf-icon-golf:before { content: "\f100"; }
+.thsn-grulf-icon-golf-1:before { content: "\f101"; }
+.thsn-grulf-icon-captain-cap:before { content: "\f102"; }
+.thsn-grulf-icon-golf-player:before { content: "\f103"; }
+.thsn-grulf-icon-golf-2:before { content: "\f104"; }
+.thsn-grulf-icon-golf-3:before { content: "\f105"; }
+.thsn-grulf-icon-golf-4:before { content: "\f106"; }
+.thsn-grulf-icon-golf-5:before { content: "\f107"; }
+.thsn-grulf-icon-golf-6:before { content: "\f108"; }
+.thsn-grulf-icon-golf-7:before { content: "\f109"; }
+.thsn-grulf-icon-sports-and-competition:before { content: "\f10a"; }
+.thsn-grulf-icon-golf-field:before { content: "\f10b"; }
+.thsn-grulf-icon-golf-8:before { content: "\f10c"; }
+.thsn-grulf-icon-award:before { content: "\f10d"; }
+.thsn-grulf-icon-golf-gloves:before { content: "\f10e"; }
+.thsn-grulf-icon-golfer:before { content: "\f10f"; }
+.thsn-grulf-icon-golf-course:before { content: "\f110"; }
+.thsn-grulf-icon-caddy:before { content: "\f111"; }
+.thsn-grulf-icon-binoculars:before { content: "\f112"; }
+.thsn-grulf-icon-placeholder:before { content: "\f113"; }
+.thsn-grulf-icon-lawn-mower:before { content: "\f114"; }
+.thsn-grulf-icon-golf-green:before { content: "\f115"; }
+.thsn-grulf-icon-sports-and-competition-1:before { content: "\f116"; }
+.thsn-grulf-icon-minigolf:before { content: "\f117"; }
+.thsn-grulf-icon-sports-and-competition-2:before { content: "\f118"; }
+.thsn-grulf-icon-golf-9:before { content: "\f119"; }
+.thsn-grulf-icon-tee:before { content: "\f11a"; }
+.thsn-grulf-icon-golf-ball:before { content: "\f11b"; }
+.thsn-grulf-icon-wind-sign:before { content: "\f11c"; }
+.thsn-grulf-icon-golfer-1:before { content: "\f11d"; }
+.thsn-grulf-icon-iron:before { content: "\f11e"; }
+.thsn-grulf-icon-shoe:before { content: "\f11f"; }
+.thsn-grulf-icon-golf-ball-1:before { content: "\f120"; }
+.thsn-grulf-icon-trophy:before { content: "\f121"; }
+.thsn-grulf-icon-map:before { content: "\f122"; }
+.thsn-grulf-icon-golf-ball-2:before { content: "\f123"; }
+.thsn-grulf-icon-golf-10:before { content: "\f124"; }
+.thsn-grulf-icon-newsletter:before { content: "\f125"; }
+.thsn-grulf-icon-call:before { content: "\f126"; }
+.thsn-grulf-icon-location:before { content: "\f127"; }
+.thsn-grulf-icon-open-email:before { content: "\f128"; }
+.thsn-grulf-icon-pdf:before { content: "\f129"; }
+.thsn-grulf-icon-document:before { content: "\f12a"; }
+.thsn-grulf-icon-circular:before { content: "\f12b"; }
