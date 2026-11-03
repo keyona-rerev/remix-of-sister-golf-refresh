@@ -1,0 +1,37 @@
+name: Add Woodfin Golf 2026 photos
+
+# Runs when the photo list changes, or by hand from the Actions tab.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/photos/**"
+      - ".github/workflows/add-photos.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: site-content
+  cancel-in-progress: false
+
+jobs:
+  photos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Pillow
+        run: python3 -m pip install --quiet pillow
+      - name: Download photos and build the page
+        run: python3 .github/photos/build.py --download
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -q -m "Add Woodfin Golf 2026 page with tournament photos"
+          git pull --rebase -q origin main
+          git push origin HEAD:main
