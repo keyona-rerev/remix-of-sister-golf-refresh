@@ -1,0 +1,76 @@
+# Copies the live WordPress site (sistergolfonline.com) into this repo as static files.
+# It runs on GitHub's servers. It replaces every file in the repo except the .github folder,
+# then commits the copy to main. Run it again from the Actions tab to refresh the copy.
+name: Mirror WordPress site
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/mirror-wordpress.yml"
+      - ".github/mirror/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mirror-wordpress
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      SOURCE: https://sistergolfonline.com
+      UA: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Collect page list from the sitemaps
+        run: |
+          set -u
+          W="$RUNNER_TEMP/work"; mkdir -p "$W"
+          python3 .github/mirror/sitemap_urls.py "$SOURCE" "$UA" > "$W/urls.txt" || true
+          echo "$SOURCE/" >> "$W/urls.txt"
+          sort -u "$W/urls.txt" -o "$W/urls.txt"
+          echo "Pages from sitemaps: $(wc -l < "$W/urls.txt")"
+
+      - name: Download the site with wget
+        run: |
+          W="$RUNNER_TEMP/work"; S="$RUNNER_TEMP/site"; mkdir -p "$S"
+          cd "$S"
+          wget --mirror --page-requisites --convert-links --adjust-extension \
+            --restrict-file-names=windows --no-host-directories \
+            --span-hosts --domains=sistergolfonline.com,www.sistergolfonline.com \
+            --no-parent -e robots=off --wait=0.3 --random-wait --tries=3 --timeout=30 \
+            --user-agent="$UA" \
+            --reject-regex '(/wp-json/|/xmlrpc\.php|/wp-login\.php|/wp-admin/|/feed/?$|/comments/feed|[?&]replytocom=|[?&]s=|/embed/?$|[?&]share=)' \
+            -i "$W/urls.txt" -o "$W/wget.log" || echo "wget exit $? (some files may have failed; see log)"
+          grep -E "ERROR|failed" "$W/wget.log" | sort | uniq -c | sort -rn | head -40 || true
+          echo "Files: $(find . -type f | wc -l)  Size: $(du -sh . | cut -f1)"
+
+      - name: Fetch assets that scripts load and make links local
+        run: python3 .github/mirror/postprocess.py "$RUNNER_TEMP/site" "$SOURCE" "$UA"
+
+      - name: Add Netlify settings and notes
+        run: |
+          S="$RUNNER_TEMP/site"
+          cp .github/mirror/netlify.toml "$S/netlify.toml"
+          cp .github/mirror/README.md "$S/README.md"
+          printf '.DS_Store\n.netlify\n' > "$S/.gitignore"
+
+      - name: Replace repo contents with the copy and push to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git ls-files -z | grep -zv '^\.github/' | xargs -0 -r git rm -q --cached
+          find . -mindepth 1 -maxdepth 1 ! -name .git ! -name .github -exec rm -rf {} +
+          cp -a "$RUNNER_TEMP/site/." .
+          git add -A
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -q -m "Static copy of sistergolfonline.com (WordPress) as of $(date -u +%Y-%m-%d)"
+          git push origin HEAD:main

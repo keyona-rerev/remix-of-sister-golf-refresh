@@ -1,0 +1,36 @@
+# Static copy of the SisterGolf WordPress site. There is no build step.
+[build]
+  command = "echo 'static site, no build'"
+  publish = "."
+
+# Old domain: send every sistergolfonline.com address to the same page on sistergolf.com.
+[[redirects]]
+  from = "https://sistergolfonline.com/*"
+  to = "https://sistergolf.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://sistergolfonline.com/*"
+  to = "https://sistergolf.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.sistergolfonline.com/*"
+  to = "https://sistergolf.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.sistergolfonline.com/*"
+  to = "https://sistergolf.com/:splat"
+  status = 301
+  force = true
+
+# www.sistergolf.com goes to sistergolf.com.
+[[redirects]]
+  from = "https://www.sistergolf.com/*"
+  to = "https://sistergolf.com/:splat"
+  status = 301
+  force = true
