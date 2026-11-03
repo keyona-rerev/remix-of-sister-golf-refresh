@@ -22,7 +22,7 @@ SLUG = "woodfin-golf-2026"
 LABEL = "Woodfin Golf 2026"
 TEMPLATE = "woodfin-golf-2025"
 PHOTOS = os.path.join(ROOT, "wp-content", "uploads", SLUG)
-TITLE = "Randall L. Woodfin's 5th Annual Charity Golf Tournament"
+TITLE = "Randall L. Woodfin's 5th Annual Charity Golf Tournament presented by Cardiac Solutions"
 INTRO = ("SisterGolf sends a heartfelt and resounding thank you to all our incredible sponsors, "
          "dedicated volunteers, and amazing golfers who came together to make the Randall L. Woodfin "
          "Charity Golf Tournament an extraordinary success!")
