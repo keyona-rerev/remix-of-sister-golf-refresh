@@ -70,6 +70,73 @@ for action, url in generated.items():
     except Exception as e:
         print(f"could not save {action}: {e}")
 
+# Photo galleries (WPBakery media grids) are filled in by the browser from
+# admin-ajax.php, so the static copy shows an empty "Highlights" section.
+# Ask WordPress for each grid once and write the photos into the page.
+import html as _html
+GRID = re.compile(r'<div class="vc_grid-container[^"]*"[^>]*data-vc-grid-settings="([^"]+)"[^>]*data-vc-request="([^"]+)"[^>]*data-vc-post-id="(\d+)"[^>]*data-vc-public-nonce="([^"]+)"[^>]*>\s*</div>')
+IMG_URL = r'(?:https?:)?//(?:www\.)?sistergolfonline\.com/wp-content/uploads/[^"\'\s)<>]+\.(?:jpe?g|png|gif|webp)'
+LIGHTBOX = """<script>/* static gallery lightbox */(function(){if(window.sgLightbox)return;window.sgLightbox=1;document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('.sg-static-gallery a');if(!a)return;e.preventDefault();var o=document.createElement('div');o.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.88);display:flex;align-items:center;justify-content:center;z-index:99999;cursor:zoom-out';var i=document.createElement('img');i.src=a.href;i.alt=a.querySelector('img').alt||'';i.style.cssText='max-width:94vw;max-height:92vh;box-shadow:0 0 24px #000';o.appendChild(i);o.onclick=function(){o.remove()};document.body.appendChild(o)})})();</script>"""
+
+
+def static_gallery(items):
+    cells = "".join(
+        f'<a href="{full}"><img src="{thumb}" alt="" loading="lazy" decoding="async" '
+        f'style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block"></a>'
+        for full, thumb in items)
+    return ('<div class="sg-static-gallery" style="display:grid;grid-template-columns:'
+            'repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:20px 0">' + cells + '</div>' + LIGHTBOX)
+
+
+grids = 0
+for f in [x for x in files if x.lower().endswith((".html", ".htm"))]:
+    with open(f, encoding="utf-8", errors="replace") as fh:
+        text = fh.read()
+    if "vc_grid-container" not in text:
+        continue
+
+    def fill(m):
+        global grids
+        settings = __import__("json").loads(_html.unescape(m.group(1)))
+        form = {"action": "vc_get_vc_grid_data", "vc_action": "vc_get_vc_grid_data",
+                "tag": settings.get("tag", "vc_media_grid"), "vc_post_id": m.group(3),
+                "_vcnonce": m.group(4)}
+        for k, v in settings.items():
+            form[f"data[{k}]"] = v
+        try:
+            req = urllib.request.Request(_html.unescape(m.group(2)), data=urllib.parse.urlencode(form).encode(),
+                                         headers={"User-Agent": ua, "X-Requested-With": "XMLHttpRequest"})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                resp = r.read().decode("utf-8", "replace")
+        except Exception as e:
+            print(f"gallery fetch failed in {os.path.relpath(f, root)}: {e}")
+            return m.group(0)
+        items = []
+        for chunk in resp.split('class="vc_grid-item ')[1:]:
+            urls = re.findall(IMG_URL, chunk.replace("\\/", "/"))
+            if not urls:
+                continue
+            full = next((u for u in urls if not re.search(r"-\d+x\d+\.\w+$", u)), urls[0])
+            thumb = next((u for u in urls if re.search(r"-\d+x\d+\.\w+$", u)), full)
+            items.append((full, thumb))
+        if not items:
+            print(f"gallery in {os.path.relpath(f, root)} came back empty: {resp[:300]!r}")
+            return m.group(0)
+        for full, thumb in items:
+            for u in (full, thumb):
+                path = urllib.parse.unquote(re.sub(r"^(?:https?:)?//[^/]+", "", u))
+                if not os.path.exists(os.path.join(root, path.lstrip("/"))):
+                    missing.add(path)
+        grids += 1
+        print(f"gallery in {os.path.relpath(f, root)}: {len(items)} photos")
+        return static_gallery(items)
+
+    new = GRID.sub(fill, text)
+    if new != text:
+        with open(f, "w", encoding="utf-8") as out:
+            out.write(new)
+print(f"filled {grids} photo galleries")
+
 ok = fail = 0
 for path in sorted(missing):
     dest = os.path.join(root, path.lstrip("/"))
