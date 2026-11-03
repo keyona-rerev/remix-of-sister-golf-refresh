@@ -33,6 +33,38 @@ for f in files:
         if ASSET.search(path) and not os.path.exists(os.path.join(root, path.lstrip("/"))):
             missing.add(path)
 
+# Some theme styles come from admin-ajax.php (made by PHP on each visit).
+# Save each one as a plain .css file and point pages at it.
+AJAX = re.compile(r"(?:https?:)?//(?:www\.)?sistergolfonline\.com/wp-admin/admin-ajax\.php\?action=([A-Za-z0-9_-]+)[^\"'\s<>]*")
+generated = {}
+for f in files:
+    with open(f, encoding="utf-8", errors="replace") as fh:
+        for m in AJAX.finditer(fh.read()):
+            generated.setdefault(m.group(1), m.group(0).replace("&#038;", "&").replace("&amp;", "&"))
+for action, url in generated.items():
+    try:
+        req = urllib.request.Request(url if url.startswith("http") else "https:" + url, headers={"User-Agent": ua})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            ctype, data = r.headers.get("Content-Type", ""), r.read()
+        if "css" not in ctype:
+            print(f"skip {action}: {ctype}")
+            continue
+        dest = os.path.join(root, "wp-content", "generated", action + ".css")
+        os.makedirs(os.path.dirname(dest), exist_ok=True)
+        with open(dest, "wb") as out:
+            out.write(data)
+        print(f"saved generated stylesheet {action}.css ({len(data)} bytes)")
+        for f in files:
+            with open(f, encoding="utf-8", errors="replace") as fh:
+                text = fh.read()
+            rel_path = os.path.relpath(dest, os.path.dirname(os.path.abspath(f))).replace(os.sep, "/")
+            new = re.sub(r"(?:https?:)?//(?:www\.)?sistergolfonline\.com/wp-admin/admin-ajax\.php\?action=" + re.escape(action) + r"[^\"'\s<>]*", rel_path, text)
+            if new != text:
+                with open(f, "w", encoding="utf-8") as out:
+                    out.write(new)
+    except Exception as e:
+        print(f"could not save {action}: {e}")
+
 ok = fail = 0
 for path in sorted(missing):
     dest = os.path.join(root, path.lstrip("/"))
