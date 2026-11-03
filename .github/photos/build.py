@@ -29,11 +29,31 @@ INTRO = ("SisterGolf sends a heartfelt and resounding thank you to all our incre
 BANNER = "wp-content/uploads/2023/10/Randall-L.-Woodfin-Banner.png"
 
 
+def list_folder(folder_id):
+    """List a Drive folder that is shared by link (the folder's public embed view)."""
+    url = f"https://drive.google.com/embeddedfolderview?id={folder_id}"
+    with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"}), timeout=60) as r:
+        page = r.read().decode("utf-8", "replace")
+    found = re.findall(r'id="entry-([\w-]+)".*?class="flip-entry-title">([^<]+)<', page, re.S)
+    found = [(i, html.unescape(n)) for i, n in found if re.search(r"\.(jpe?g|png|webp)$", n, re.I)]
+    print(f"folder {folder_id}: {len(found)} photos")
+    if not found:
+        sys.exit("the folder is empty or not shared by link")
+    return found
+
+
 def download():
     from PIL import Image, ImageOps
     os.makedirs(os.path.join(PHOTOS, "thumbs"), exist_ok=True)
-    rows = [l.rstrip("\n").split("\t") for l in open(os.path.join(HERE, SLUG + ".txt"), encoding="utf-8")
-            if l.strip() and not l.startswith("#")]
+    rows = []
+    for line in open(os.path.join(HERE, SLUG + ".txt"), encoding="utf-8"):
+        parts = line.strip().split("\t")
+        if not parts[0] or parts[0].startswith("#"):
+            continue
+        if parts[0] == "folder":
+            rows += list_folder(parts[1])
+        else:
+            rows.append((parts[0], parts[1] if len(parts) > 1 else parts[0]))
     ok = bad = 0
     for fid, name in rows:
         base = re.sub(r"[^A-Za-z0-9_-]+", "-", os.path.splitext(name)[0]).strip("-").lower() or fid

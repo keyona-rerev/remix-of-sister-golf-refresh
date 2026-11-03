@@ -1,1 +1,3 @@
-# Woodfin Golf 2026 photos: Drive file id <TAB> file name. One per line.
+# Woodfin Golf 2026 photos. Either "folder<TAB>Drive folder id" (folder shared by link)
+# or "Drive file id<TAB>file name", one per line.
+folder	1WYkvUFMN3uja5CGrGYy88NXASZJ9R96g
