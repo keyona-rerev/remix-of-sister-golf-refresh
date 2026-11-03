@@ -54,6 +54,11 @@ for action, url in generated.items():
         with open(dest, "wb") as out:
             out.write(data)
         print(f"saved generated stylesheet {action}.css ({len(data)} bytes)")
+        files.append(dest)
+        for m in ABS.finditer(data.decode("utf-8", "replace")):
+            path = urllib.parse.unquote((m.group(1) or "/").replace("\\/", "/").split("?")[0].split("#")[0])
+            if ASSET.search(path) and not os.path.exists(os.path.join(root, path.lstrip("/"))):
+                missing.add(path)
         for f in files:
             with open(f, encoding="utf-8", errors="replace") as fh:
                 text = fh.read()
