@@ -45,10 +45,9 @@ jobs:
           cd "$S"
           wget --mirror --page-requisites --convert-links --adjust-extension \
             --restrict-file-names=windows --no-host-directories \
-            --span-hosts --domains=sistergolfonline.com,www.sistergolfonline.com \
             --no-parent -e robots=off --wait=0.3 --random-wait --tries=3 --timeout=30 \
             --user-agent="$UA" \
-            --reject-regex '(/wp-json/|/xmlrpc\.php|/wp-login\.php|/wp-admin/|/feed/?$|/comments/feed|[?&]replytocom=|[?&]s=|/embed/?$|[?&]share=)' \
+            --reject-regex '(/wp-json/|/xmlrpc\.php|/wp-login\.php|/wp-admin/|/feed/?$|/comments/feed|[?&]replytocom=|[?&]s=|/embed/?$|[?&]share=|[?&]p=[0-9]+)' \
             -i "$W/urls.txt" -o "$W/wget.log" || echo "wget exit $? (some files may have failed; see log)"
           grep -E "ERROR|failed" "$W/wget.log" | sort | uniq -c | sort -rn | head -40 || true
           echo "Files: $(find . -type f | wc -l)  Size: $(du -sh . | cut -f1)"
@@ -62,6 +61,7 @@ jobs:
           cp .github/mirror/netlify.toml "$S/netlify.toml"
           cp .github/mirror/README.md "$S/README.md"
           printf '.DS_Store\n.netlify\n' > "$S/.gitignore"
+          touch "$S/.nojekyll"
 
       - name: Replace repo contents with the copy and push to main
         run: |
