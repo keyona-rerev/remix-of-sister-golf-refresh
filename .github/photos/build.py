@@ -26,7 +26,23 @@ TITLE = "Randall L. Woodfin's 5th Annual Charity Golf Tournament presented by Ca
 INTRO = ("SisterGolf sends a heartfelt and resounding thank you to all our incredible sponsors, "
          "dedicated volunteers, and amazing golfers who came together to make the Randall L. Woodfin "
          "Charity Golf Tournament an extraordinary success!")
-BANNER = "wp-content/uploads/2023/10/Randall-L.-Woodfin-Banner.png"
+BANNER = f"wp-content/uploads/{SLUG}/banner/welcome-5th-annual.jpg"
+BANNER_SOURCE = "_mg_7833-2.jpg"  # the "Welcome to the 5th Annual" sponsor sign
+
+
+def make_banner():
+    """Crop the event sign photo into a wide banner (same shape as the old Woodfin banners)."""
+    dest = os.path.join(ROOT, BANNER)
+    src = os.path.join(PHOTOS, BANNER_SOURCE)
+    if os.path.exists(dest) or not os.path.exists(src):
+        return
+    from PIL import Image
+    im = Image.open(src)
+    w, h = im.size
+    ch = int(w / 2.4)
+    top = max(0, min(h - ch, int(h * 0.68 - ch / 2)))
+    os.makedirs(os.path.dirname(dest), exist_ok=True)
+    im.crop((0, top, w, top + ch)).save(dest, "JPEG", quality=85, optimize=True, progressive=True)
 
 
 def list_folder(folder_id):
@@ -94,12 +110,7 @@ def gallery():
         f'<a href="../wp-content/uploads/{SLUG}/{n}"><img src="../wp-content/uploads/{SLUG}/thumbs/{n}" alt="" '
         'loading="lazy" decoding="async" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block"></a>'
         for n in names)
-    lightbox = ("<script>/* static gallery lightbox */(function(){if(window.sgLightbox)return;window.sgLightbox=1;"
-                "document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('.sg-static-gallery a');"
-                "if(!a)return;e.preventDefault();var o=document.createElement('div');o.style.cssText='position:fixed;inset:0;"
-                "background:rgba(0,0,0,.88);display:flex;align-items:center;justify-content:center;z-index:99999;cursor:zoom-out';"
-                "var i=document.createElement('img');i.src=a.href;i.style.cssText='max-width:94vw;max-height:92vh;box-shadow:0 0 24px #000';"
-                "o.appendChild(i);o.onclick=function(){o.remove()};document.body.appendChild(o)})})();</script>")
+    lightbox = "<script>" + open(os.path.join(HERE, "..", "mirror", "gallery.js"), encoding="utf-8").read() + "</script>"
     return len(names), ('<div class="sg-static-gallery" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));'
                         f'gap:10px;margin:20px 0">{cells}</div>{lightbox}')
 
@@ -115,6 +126,7 @@ PREV = re.compile(r'<li[^>]*><a href="([^"]*)"[^>]*>Woodfin Golf 2025</a></li>')
 
 
 def build_page():
+    make_banner()
     count, grid = gallery()
     h = open(os.path.join(ROOT, TEMPLATE, "index.html"), encoding="utf-8").read()
     h = re.sub(r'<li class="[^"]*menu-item-' + SLUG + r'[^"]*"><a [^>]*>[^<]*</a></li>\n?', "", h)
@@ -128,7 +140,7 @@ def build_page():
     body = (row('<div class="vc_empty_space" style="height: 80px"><span class="vc_empty_space_inner"></span></div>'
                 '<div class="wpb_single_image wpb_content_element vc_align_center"><figure class="wpb_wrapper vc_figure">'
                 f'<div class="vc_single_image-wrapper vc_box_border_grey"><img loading="lazy" decoding="async" src="../{BANNER}" '
-                'class="vc_single_image-img attachment-full" alt="Randall L. Woodfin Charity Golf Tournament" /></div></figure></div>')
+                'class="vc_single_image-img attachment-full" alt="Welcome to the 5th Annual Randall L. Woodfin Charity Golf Tournament, presented by Cardiac Solutions" /></div></figure></div>')
             + row('<div class="vc_empty_space" style="height: 32px"><span class="vc_empty_space_inner"></span></div>'
                   f'<h2 style="font-size: 42px;line-height: 50px;text-align: left" class="vc_custom_heading">{html.escape(TITLE)}</h2>'
                   f'<div class="wpb_text_column wpb_content_element"><div class="wpb_wrapper"><h4>{html.escape(INTRO)}</h4></div></div>')

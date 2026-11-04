@@ -76,7 +76,7 @@ for action, url in generated.items():
 import html as _html
 GRID = re.compile(r'<div class="vc_grid-container[^"]*"[^>]*data-vc-grid-settings="([^"]+)"[^>]*data-vc-request="([^"]+)"[^>]*data-vc-post-id="(\d+)"[^>]*data-vc-public-nonce="([^"]+)"[^>]*>\s*</div>')
 IMG_URL = r'(?:https?:)?//(?:www\.)?sistergolfonline\.com/wp-content/uploads/[^"\'\s)<>]+\.(?:jpe?g|png|gif|webp)'
-LIGHTBOX = """<script>/* static gallery lightbox */(function(){if(window.sgLightbox)return;window.sgLightbox=1;document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('.sg-static-gallery a');if(!a)return;e.preventDefault();var o=document.createElement('div');o.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.88);display:flex;align-items:center;justify-content:center;z-index:99999;cursor:zoom-out';var i=document.createElement('img');i.src=a.href;i.alt=a.querySelector('img').alt||'';i.style.cssText='max-width:94vw;max-height:92vh;box-shadow:0 0 24px #000';o.appendChild(i);o.onclick=function(){o.remove()};document.body.appendChild(o)})})();</script>"""
+LIGHTBOX = "<script>" + open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "gallery.js"), encoding="utf-8").read() + "</script>"
 
 
 def static_gallery(items):
