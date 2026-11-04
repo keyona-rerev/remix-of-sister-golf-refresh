@@ -664,12 +664,23 @@ var thsn_js_variables = {"responsive":"1200"};
 (function () {
   if (window.sgGallery) return;
   window.sgGallery = 1;
+  // The theme wraps every <select> in a full-width box with its own arrow. Undo that here.
+  var css = document.createElement("style");
+  css.textContent =
+    ".sg-gallery-bar label{display:inline-flex!important;align-items:center;gap:8px;margin:0!important;white-space:nowrap}" +
+    ".sg-gallery-bar .thsn-select{display:inline-block!important;border:0!important;width:auto!important}" +
+    ".sg-gallery-bar .thsn-select:after{display:none!important}" +
+    ".sg-gallery-bar select{display:inline-block!important;width:auto!important;min-width:84px;height:auto!important;" +
+    "padding:6px 10px!important;font-size:16px!important;line-height:1.4!important;color:#333!important;" +
+    "background:#fff!important;border:2px solid #ececec!important;border-radius:4px!important;" +
+    "-webkit-appearance:menulist!important;-moz-appearance:menulist!important;appearance:auto!important;cursor:pointer}";
+  document.head.appendChild(css);
   var BTN = "padding:6px 14px;border:0;border-radius:4px;background:#ef67a5;color:#fff;cursor:pointer;font:inherit";
   function bar(withPicker) {
     var d = document.createElement("div");
     d.className = "sg-gallery-bar";
     d.style.cssText = "display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin:14px 0";
-    d.innerHTML = (withPicker ? '<label style="margin:0">Show <select aria-label="Photos per page" style="padding:4px 6px;font:inherit">' +
+    d.innerHTML = (withPicker ? '<label style="margin:0">Show <select aria-label="Photos per page">' +
         '<option value="10">10</option><option value="20" selected>20</option><option value="50">50</option><option value="0">All</option></select></label>' : "") +
       '<button type="button" data-step="-1" style="' + BTN + '">Previous</button>' +
       '<span aria-live="polite"></span>' +

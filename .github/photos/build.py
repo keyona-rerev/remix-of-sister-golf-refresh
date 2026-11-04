@@ -26,23 +26,9 @@ TITLE = "Randall L. Woodfin's 5th Annual Charity Golf Tournament presented by Ca
 INTRO = ("SisterGolf sends a heartfelt and resounding thank you to all our incredible sponsors, "
          "dedicated volunteers, and amazing golfers who came together to make the Randall L. Woodfin "
          "Charity Golf Tournament an extraordinary success!")
-BANNER = f"wp-content/uploads/{SLUG}/banner/welcome-5th-annual.jpg"
-BANNER_SOURCE = "_mg_7833-2.jpg"  # the "Welcome to the 5th Annual" sponsor sign
-
-
-def make_banner():
-    """Crop the event sign photo into a wide banner (same shape as the old Woodfin banners)."""
-    dest = os.path.join(ROOT, BANNER)
-    src = os.path.join(PHOTOS, BANNER_SOURCE)
-    if os.path.exists(dest) or not os.path.exists(src):
-        return
-    from PIL import Image
-    im = Image.open(src)
-    w, h = im.size
-    ch = int(w / 2.4)
-    top = max(0, min(h - ch, int(h * 0.68 - ch / 2)))
-    os.makedirs(os.path.dirname(dest), exist_ok=True)
-    im.crop((0, top, w, top + ch)).save(dest, "JPEG", quality=85, optimize=True, progressive=True)
+# The 2023 Woodfin banner graphic with only the year changed to 2026
+# (made once by make_banner_2026.py, which redraws just the last digit).
+BANNER = f"wp-content/uploads/{SLUG}/banner/Randall-L.-Woodfin-Banner-2026.png"
 
 
 def list_folder(folder_id):
@@ -126,7 +112,6 @@ PREV = re.compile(r'<li[^>]*><a href="([^"]*)"[^>]*>Woodfin Golf 2025</a></li>')
 
 
 def build_page():
-    make_banner()
     count, grid = gallery()
     h = open(os.path.join(ROOT, TEMPLATE, "index.html"), encoding="utf-8").read()
     h = re.sub(r'<li class="[^"]*menu-item-' + SLUG + r'[^"]*"><a [^>]*>[^<]*</a></li>\n?', "", h)
@@ -140,7 +125,7 @@ def build_page():
     body = (row('<div class="vc_empty_space" style="height: 80px"><span class="vc_empty_space_inner"></span></div>'
                 '<div class="wpb_single_image wpb_content_element vc_align_center"><figure class="wpb_wrapper vc_figure">'
                 f'<div class="vc_single_image-wrapper vc_box_border_grey"><img loading="lazy" decoding="async" src="../{BANNER}" '
-                'class="vc_single_image-img attachment-full" alt="Welcome to the 5th Annual Randall L. Woodfin Charity Golf Tournament, presented by Cardiac Solutions" /></div></figure></div>')
+                'class="vc_single_image-img attachment-full" alt="Randall L. Woodfin Charity Golf Tournament banner" /></div></figure></div>')
             + row('<div class="vc_empty_space" style="height: 32px"><span class="vc_empty_space_inner"></span></div>'
                   f'<h2 style="font-size: 42px;line-height: 50px;text-align: left" class="vc_custom_heading">{html.escape(TITLE)}</h2>'
                   f'<div class="wpb_text_column wpb_content_element"><div class="wpb_wrapper"><h4>{html.escape(INTRO)}</h4></div></div>')
