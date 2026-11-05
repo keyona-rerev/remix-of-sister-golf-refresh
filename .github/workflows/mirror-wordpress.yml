@@ -1,3 +1,7 @@
+# Do not run this after the domain switch. sistergolfonline.com will point at the new site,
+# so the mirror would copy the replica onto itself. The first step below checks live DNS
+# and stops the run once sistergolfonline.com points at the Netlify site (75.2.60.5).
+#
 # Copies the live WordPress site (sistergolfonline.com) into this repo as static files.
 # It runs on GitHub's servers. It replaces every file in the repo except the .github folder,
 # then commits the copy to main. Run it again from the Actions tab to refresh the copy.
@@ -26,6 +30,17 @@ jobs:
       SOURCE: https://sistergolfonline.com
       UA: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
     steps:
+      - name: Stop if sistergolfonline.com already points at the new site
+        run: |
+          IP=$(python3 -c "import socket; print(socket.gethostbyname('sistergolfonline.com'))" 2>/dev/null || true)
+          SRV=$(curl -sI --max-time 20 https://sistergolfonline.com/ | tr -d '\r' | grep -i '^server:' || true)
+          echo "sistergolfonline.com resolves to: ${IP:-unknown}"
+          echo "Server header: ${SRV:-none}"
+          if [ "$IP" = "75.2.60.5" ] || echo "$SRV" | grep -qi netlify; then
+            echo "::error::sistergolfonline.com now points at the Netlify site. The mirror would copy the replica onto itself. Stopping."
+            exit 1
+          fi
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
